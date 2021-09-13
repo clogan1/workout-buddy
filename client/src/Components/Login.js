@@ -2,7 +2,7 @@ import LoginForm from './LoginForm';
 import SignUpForm from './SignUpForm';
 import { useState } from 'react';
 
-function Login () {
+function Login ({ setUser }) {
 const [showLogin, setShowLogin] = useState(true)
 
     return (
@@ -11,7 +11,7 @@ const [showLogin, setShowLogin] = useState(true)
             {showLogin?
              <LoginForm />
              : 
-             <SignUpForm />
+             <SignUpForm setUser={setUser}/>
             }
         </div>
     )
