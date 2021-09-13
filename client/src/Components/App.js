@@ -1,8 +1,8 @@
 import '../App.css';
 import Login from "./Login"
 import {
-  Switch,Route} from "react-router-dom";
-import {useEffect,useState} from "react";
+  Switch, Route} from "react-router-dom";
+import { useEffect, useState } from "react";
 
 function App() {
 
