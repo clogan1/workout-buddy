@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   
+  resources :workout_logs
+  resources :workout_exercises
+  resources :workouts
+  resources :categories
+  resources :exercises
   # resources :users
   post '/signup', to: 'users#create'
   post '/login', to: 'sessions#create'
