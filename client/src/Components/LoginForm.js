@@ -1,5 +1,6 @@
 import React from 'react';
 import {useState} from 'react';
+import { useHistory } from "react-router-dom"
 
 function LoginForm({setUser}) {
     const [username, setUserName] = useState("");
@@ -9,6 +10,7 @@ function LoginForm({setUser}) {
     const history = useHistory();
 
  function handleSubmit (e) {
+   setErrors([])
     e.preventDefault();
     setIsLoading(true);
      fetch('/login', {
@@ -32,10 +34,11 @@ function LoginForm({setUser}) {
         }
     });
   }
+
+  // console.log(errors)
         
     return(
         <div className ="login-wrapper">
-            <h1>Please Login</h1>
             <form onSubmit={handleSubmit}>
             <label htmlFor="username">Username: </label>
             <input 
@@ -46,13 +49,25 @@ function LoginForm({setUser}) {
             />
          <label htmlFor="password">Password: </label>
             <input 
-             type="text"
+             type="password"
              id="password"
              value={password}
              onChange={(e) => setPassword(e.target.value)}
             />
             <button type="submit">Login</button>
         </form>
+        {(errors.length > 0) ? 
+            (
+                <ul>
+                    {errors.map(err => (
+                        <li key={err}>{err}</li>
+                    ))
+                    }
+                </ul>
+            )
+            :
+            null
+            }
         </div>
     )
 }
