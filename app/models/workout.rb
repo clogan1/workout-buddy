@@ -8,4 +8,5 @@ class Workout < ApplicationRecord
   validates :intensity, presence: true, inclusion: 1..3
   validates :duration, presence: true, inclusion: 1..120
   validates :name, presence: true
+
 end

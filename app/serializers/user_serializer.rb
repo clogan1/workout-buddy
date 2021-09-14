@@ -9,7 +9,8 @@ class UserSerializer < ActiveModel::Serializer
   end
 
   def weekly_goal_tracker
-    "#{total_workouts_completed} / #{self.weekly_goal}"
+    "#{total_workouts_completed}"
   end
   
 end
+

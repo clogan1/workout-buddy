@@ -35,7 +35,7 @@ function LoginForm({setUser}) {
     });
   }
 
-  // console.log(errors)
+  console.log(errors)
         
     return(
         <div className ="login-wrapper">
