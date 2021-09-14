@@ -12,12 +12,22 @@ function App() {
   useEffect(() => {
     fetch("/me")
    .then(res => {
-     console.log(res)
+    //  console.log(res)
      if (res.ok) {
        res.json().then(user => setUser(user))
      }
    })
   }, [])
+
+  function handleSignoutClick(){
+    fetch('/logout', {
+      method: 'DELETE'
+    }).then((r) => {
+      if(r.ok){
+        setUser(null)
+      }
+    })
+  }
 
   console.log(user)
 
@@ -26,6 +36,7 @@ function App() {
   return (
     <div className="App">
       <h1>Workout Buddy</h1>
+      {user? <button onClick={handleSignoutClick}>Sign Out</button> : null}
       <Switch>
         <Route path='/myworkoutbuddy'>
           <MyWorkoutBuddy />

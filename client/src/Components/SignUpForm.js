@@ -28,13 +28,13 @@ function SignUpForm({ setUser }) {
             if (res.ok) {
                 res.json().then(user => setUser(user))
             } else {
-                res.json().then(err => setErrors(err))
+                res.json().then(err => setErrors(err.errors))
             }
         })
         history.push('/myworkoutbuddy')
     }
 
-    console.log(errors)
+    // console.log(errors)
 
     return (
         <>
@@ -61,6 +61,7 @@ function SignUpForm({ setUser }) {
                         Goals are helpful for keeping you motivated an on track. We recommend starting small and working your way up...
                     </em>
                     <select onChange={(e) => setWeeklyGoal(e.target.value)}>
+                        <option value="0">--</option>
                         <option value='1'>1</option> 
                         <option value='2'>2</option> 
                         <option value='3'>3</option> 
@@ -72,6 +73,19 @@ function SignUpForm({ setUser }) {
                 </label>
                 <input type='submit' value='Get Started'/>
             </form>
+            {(errors.length > 0) ? 
+            (
+                <ul>
+                    {errors.map(err => (
+                        <li key={err}>{err}</li>
+                    ))
+                    }
+                </ul>
+
+            )
+            :
+            null
+            }
         </>
     )
 }
