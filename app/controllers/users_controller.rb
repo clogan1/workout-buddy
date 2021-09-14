@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-    before_action :authorize
+    before_action :authorize, except: :create
 
     #'/me'
     def show
