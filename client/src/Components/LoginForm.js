@@ -4,6 +4,7 @@ import {useState} from 'react';
 function LoginForm({setUser}) {
     const [username, setUserName] = useState("");
     const [password, setPassword] = useState("");
+    const history = useHistory();
 
  function handleSubmit (e) {
     e.preventDefault()
@@ -22,6 +23,7 @@ function LoginForm({setUser}) {
       .then((r) => {
         if (r.ok) {
           r.json().then((user) => setUser(user));
+          history.push('/myworkoutbuddy')
         }
     });
   }
