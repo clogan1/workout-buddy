@@ -3,12 +3,12 @@ import SignUpForm from './SignUpForm';
 import { useState } from 'react';
 
 function Login ({ setUser }) {
-const [showLogin, setShowLogin] = useState(true)
+const [showLogin, setShowLogin] = useState(false)
 
     return (
         <div> 
             <h1>Login</h1>
-            {showLogin?
+            {showLogin ?
              <LoginForm />
              : 
              <SignUpForm setUser={setUser}/>
