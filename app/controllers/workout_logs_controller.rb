@@ -7,7 +7,7 @@ class WorkoutLogsController < ApplicationController
   private
 
   def workout_params 
-    params.permit( :user_id, :workout_id, :is_completed, :notes)
+    params.permit( :user_id, :workout_id, :is_completed, :date_completed, :notes)
   end
 
 end
