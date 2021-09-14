@@ -29,7 +29,6 @@ function LoginForm({setUser}) {
           history.push('/myworkoutbuddy');
         } else {
           r.json().then((err) => setErrors(err.errors));
-         
         }
     });
   }
