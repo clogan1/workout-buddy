@@ -2,10 +2,10 @@ import React from 'react'
 import UserWorkoutItem from './UserWorkoutItem'
 import { useHistory } from "react-router-dom";
 
-function UserWorkoutList({ workout_logs, workouts }) {
+function UserWorkoutList({ myWorkoutLog, workouts, handleSeeDetails }) {
     let history = useHistory()
 
-    console.log(workout_logs)
+    // console.log(workout_logs)
     // console.log(workouts)
 
     function handleRouteWorkouts(){
@@ -28,8 +28,8 @@ function UserWorkoutList({ workout_logs, workouts }) {
                 </tr>
             </thead>
             <tbody>
-                {workout_logs.map(log => (
-                    <UserWorkoutItem key={log.id} log={log}/>
+                {myWorkoutLog.map(log => (
+                    <UserWorkoutItem key={log.id} log={log} handleSeeDetails={handleSeeDetails}/>
                 ))
                 }
             </tbody>

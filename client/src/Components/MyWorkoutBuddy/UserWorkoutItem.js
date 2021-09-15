@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-function UserWorkoutItem({log}) {
+function UserWorkoutItem({log, handleSeeDetails}) {
     const [workout, setWorkout] = useState([])
     const { id, is_completed, notes, workout_id, created_at, date_completed, user_id} = log
 
@@ -31,10 +31,6 @@ function UserWorkoutItem({log}) {
         .then(data => console.log(data))
     }
 
-    function handleSeeDetails(){
-        console.log("See details clicked!")
-        //will build out later
-    }
 
     function handleDelete(){
         console.log("Deleted, bye!")
@@ -63,7 +59,7 @@ function UserWorkoutItem({log}) {
             }
             <td>
                 {is_completed? <span>COMPLETED</span> : <button onClick={handleComplete}>Complete</button>}
-                <button onClick={handleSeeDetails}>See Details</button>
+                <button onClick={() => handleSeeDetails(workout.id, id)}>See Details</button>
                 <button onClick={handleDelete}>Delete</button>
             </td>
         </tr>
