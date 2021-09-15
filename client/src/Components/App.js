@@ -1,3 +1,6 @@
+import { ThemeProvider, createTheme } from '@material-ui/core'
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core'
 import '../App.css';
 import Login from "./Login"
 import { Switch, Route } from "react-router-dom";
@@ -8,8 +11,29 @@ import UpperBody from './Workouts/UpperBody';
 import LowerBody from './Workouts/LowerBody';
 import Core from './Workouts/Core';
 import Cardio from './Workouts/Cardio';
+import NavBar from './NavBar';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#6F2DBD'
+    },
+    secondary: {
+      main: '#3A3838'
+    }
+  }
+});
+
+const useStyles = makeStyles({
+  app: {
+    color: 'white',
+    backgroundColor: '#282626',
+    display: 'flex'
+  }
+})
 
 function App() {
+  const classes = useStyles()
 
  const [user, setUser] = useState()
  const [categories, setCategories] = useState([])
@@ -65,9 +89,10 @@ function App() {
 
 
   return (
-    <div className="App">
-      <h1>Workout Buddy</h1>
-      {user? <button onClick={handleSignoutClick}>Sign Out</button> : null}
+    <ThemeProvider theme={theme}>
+    <div className={classes.app}>
+      <NavBar />
+      {user? <Button onClick={handleSignoutClick} color="primary">Sign Out</Button> : null}
       <Switch>
         <Route path='/myworkoutbuddy'>
           <MyWorkoutBuddy user={user} myLog={myLog} deleteWorkoutLogItem={deleteWorkoutLogItem}/>
@@ -89,6 +114,7 @@ function App() {
         </Route>
       </Switch>
     </div>
+    </ThemeProvider>
   );
 }
 
