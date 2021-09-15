@@ -1,6 +1,8 @@
 import React from 'react'
 
-function UserStats({ weekly_goal, total_workouts_completed }) {
+function UserStats({ weekly_goal, total_workouts_completed, workouts_this_week }) {
+    let thisWeek = Object.values(workouts_this_week)[0]
+
     return (
         <>
             <div>
@@ -8,7 +10,7 @@ function UserStats({ weekly_goal, total_workouts_completed }) {
                 <p>all-time workouts completed</p>
             </div>
             <div>
-                <h3># / {weekly_goal}</h3>
+                <h3>{thisWeek} of {weekly_goal}</h3>
                 <p>workouts completed this week</p>
             </div>
         </>

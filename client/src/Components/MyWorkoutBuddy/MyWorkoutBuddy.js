@@ -7,7 +7,7 @@ function MyWorkoutBuddy({ user, myLog, deleteWorkoutLogItem }) {
     const [showDetail, setShowDetail] = useState(false)
     const [detailWorkout, setDetailWorkout] = useState('')
     const [detailLogId, setDetailLogId] = useState('')
-    const {id, username, workout_logs, workouts, weekly_goal, total_workouts_completed } = user
+    const {id, username, workout_logs, workouts, weekly_goal, total_workouts_completed, workouts_this_week } = user
 
     function handleSeeDetails(workout_id, log_id){
         // console.log("See details clicked!")
@@ -23,7 +23,7 @@ function MyWorkoutBuddy({ user, myLog, deleteWorkoutLogItem }) {
     return (
         <div>
             <h3>{username}'s Workout Buddy</h3>
-            <UserStats weekly_goal={weekly_goal} total_workouts_completed={total_workouts_completed}/>
+            <UserStats weekly_goal={weekly_goal} total_workouts_completed={total_workouts_completed} workouts_this_week={workouts_this_week}/>
             {(!showDetail) ?
                 (
                 <UserWorkoutList 

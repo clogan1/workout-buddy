@@ -15,17 +15,19 @@ function UserWorkoutItem({log, handleSeeDetails, deleteWorkoutLogItem}) {
         .then(setCompletedButton(is_completed))
     }, [])
 
-    // console.log(Date.now())
+    //console.log(Date.now().getDate())
 
     function handleComplete(){
         console.log("Completed, woot!")
+        const t = new Date(Date.now()).toISOString()
         fetch(`/workout_logs/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
             },
             body: JSON.stringify(
-                { is_completed: true 
+                { is_completed: true,
+                    date_completed: t
                     //need to figure out pathing datetime in proper format
                 })
         })
