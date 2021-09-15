@@ -13,6 +13,13 @@
   }
 }
 
+.WORKOUT-TILES {
+  width: 100px;
+  height: 100px;
+  color: white;
+  background-color: black;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
