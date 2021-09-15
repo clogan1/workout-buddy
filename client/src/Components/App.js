@@ -4,10 +4,15 @@ import { Switch, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 import MyWorkoutBuddy from './MyWorkoutBuddy/MyWorkoutBuddy';
 import WorkoutsPage from './Workouts/WorkoutsPage';
+import UpperBody from './Workouts/UpperBody';
+import LowerBody from './Workouts/LowerBody';
+import Core from './Workouts/Core';
+import Cardio from './Workouts/Cardio';
 
 function App() {
 
- const [user, setUser] = useState() 
+ const [user, setUser] = useState()
+ const [categories, setCategories] = useState([])
 
   useEffect(() => {
     fetch("/me")
@@ -18,6 +23,14 @@ function App() {
      }
    })
   }, [])
+
+  useEffect(() => {
+    fetch('/categories')
+    .then(res => res.json())
+    .then(setCategories)
+  }, [])
+
+  // console.log(categories)
 
   function handleSignoutClick(){
     fetch('/logout', {
@@ -43,6 +56,18 @@ function App() {
         </Route>
         <Route path='/workouts'>
           <WorkoutsPage />
+        </Route>
+        <Route path='/categories/1'>
+          <UpperBody categories={categories}/>
+        </Route>
+        <Route path='/categories/2'>
+          <LowerBody categories={categories}/>
+        </Route>
+        <Route path='/categories/3'>
+          <Core categories={categories}/>
+        </Route>
+        <Route path='/categories/4'>
+          <Cardio categories={categories}/>
         </Route>
       </Switch>
     </div>
