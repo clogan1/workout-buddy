@@ -1,10 +1,10 @@
-import CategoryCards from './CategoryCards'
+import WorkoutCard from './WorkoutCard'
 
 function UpperBody({ categories }){
     const upperBodyCategory = categories.filter(category => category.name === 'Upper Body')
     // console.log(upperBodyCategory)
     const upperBodyWorkouts = upperBodyCategory[0].workouts.map(workout => (
-        <CategoryCards workout={workout} />
+        <WorkoutCard workout={workout} />
     ))
     // console.log(upperBodyWorkouts)
 
