@@ -44,6 +44,7 @@ function App() {
     }).then((r) => {
       if(r.ok){
         setUser(null)
+        setLog([])
       }
     })
   }
@@ -60,7 +61,7 @@ function App() {
 
   console.log(user)
 
-  if(!user) return <Login setUser={setUser}/> 
+  if(!user) return <Login setUser={setUser} setLog={setLog}/> 
 
 
   return (

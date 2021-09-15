@@ -2,7 +2,7 @@ import LoginForm from './LoginForm';
 import SignUpForm from './SignUpForm';
 import { useState } from 'react';
 
-function Login ({ setUser }) {
+function Login ({ setUser, setLog }) {
 const [showLogin, setShowLogin] = useState(true)
 
     return (
@@ -11,7 +11,7 @@ const [showLogin, setShowLogin] = useState(true)
             {showLogin ? 
             (
                 <>
-                <LoginForm setUser={setUser}/>
+                <LoginForm setUser={setUser} setLog={setLog}/>
                 <div>
                     Not a member? <span onClick={() => setShowLogin(false)}>Sign up</span>
                 </div>

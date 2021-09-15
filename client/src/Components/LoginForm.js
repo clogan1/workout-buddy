@@ -2,7 +2,7 @@ import React from 'react';
 import {useState} from 'react';
 import { useHistory } from "react-router-dom"
 
-function LoginForm({setUser}) {
+function LoginForm({setUser, setLog}) {
     const [username, setUserName] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState([]);
@@ -27,7 +27,10 @@ function LoginForm({setUser}) {
       .then((r) => {
         setIsLoading(false);
         if (r.ok) {
-          r.json().then((user) => setUser(user));
+          r.json().then((user) => {
+            setUser(user)
+            setLog(user.workout_logs)
+          });
           history.push('/myworkoutbuddy');
         } else {
           r.json().then((err) => setErrors(err.errors));
