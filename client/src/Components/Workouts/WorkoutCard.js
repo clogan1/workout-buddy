@@ -1,11 +1,22 @@
 
 
-function WorkoutCard({ workout }){
+function WorkoutCard({ workout, user }){
     const { id, name, intensity, duration } = workout
+    const newWorkoutLog = {
+        user_id: user.id,
+        workout_id: id
+    }
 
 
     function handleAddWorkout(e){
-        console.log('hi')
+        e.preventDefault()
+        fetch('/workout_logs', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(newWorkoutLog)
+        })
+        .then(res => res.json())
+        .then(addedWorkout => console.log(addedWorkout))
     }
 
     

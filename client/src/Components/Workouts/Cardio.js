@@ -1,9 +1,9 @@
 import WorkoutCard from './WorkoutCard'
 
-function Cardio({ categories }){
+function Cardio({ categories, user }){
     const cardioCategory = categories.filter(category => category.name === 'Cardio')
     const cardioWorkouts = cardioCategory[0].workouts.map(workout => (
-        <WorkoutCard workout={workout} />
+        <WorkoutCard workout={workout} user ={user}/>
     ))
 
 

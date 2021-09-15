@@ -58,16 +58,16 @@ function App() {
           <WorkoutsPage />
         </Route>
         <Route path='/categories/1'>
-          <UpperBody categories={categories}/>
+          <UpperBody user ={user} categories={categories}/>
         </Route>
         <Route path='/categories/2'>
-          <LowerBody categories={categories}/>
+          <LowerBody user ={user} categories={categories}/>
         </Route>
         <Route path='/categories/3'>
-          <Core categories={categories}/>
+          <Core user ={user} categories={categories}/>
         </Route>
         <Route path='/categories/4'>
-          <Cardio categories={categories}/>
+          <Cardio user ={user} categories={categories}/>
         </Route>
       </Switch>
     </div>

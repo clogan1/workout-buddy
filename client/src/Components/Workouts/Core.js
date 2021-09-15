@@ -1,9 +1,9 @@
 import WorkoutCard from './WorkoutCard'
 
-function Core({ categories }){
+function Core({ categories, user }){
     const coreCategory = categories.filter(category => category.name === 'Core')
     const coreWorkouts = coreCategory[0].workouts.map(workout => (
-        <WorkoutCard workout={workout} />
+        <WorkoutCard workout={workout} user ={user}/>
     ))
 
 
