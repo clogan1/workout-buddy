@@ -2,13 +2,14 @@ import React from 'react'
 import UserStats from './UserStats'
 import UserWorkoutList from './UserWorkoutList'
 
+function MyWorkoutBuddy({ user }) {
+    const {id, username, workout_logs, workouts, weekly_goal, total_workouts_completed } = user
 
-function MyWorkoutBuddy() {
     return (
         <div>
-            User's Page
-            <UserStats/>
-            <UserWorkoutList/>
+            <h3>{username}'s Workout Buddy</h3>
+            <UserStats weekly_goal={weekly_goal} total_workouts_completed={total_workouts_completed}/>
+            <UserWorkoutList workout_logs={workout_logs} workouts={workouts}/>
         </div>
     )
 }

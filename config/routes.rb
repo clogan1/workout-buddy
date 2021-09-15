@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :workouts
   resources :categories
   resources :exercises
-  # resources :users
+ 
   post '/signup', to: 'users#create'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'

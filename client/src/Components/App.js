@@ -52,7 +52,7 @@ function App() {
       {user? <button onClick={handleSignoutClick}>Sign Out</button> : null}
       <Switch>
         <Route path='/myworkoutbuddy'>
-          <MyWorkoutBuddy />
+          <MyWorkoutBuddy user={user}/>
         </Route>
         <Route path='/workouts'>
           <WorkoutsPage />
