@@ -6,7 +6,9 @@ function WorkoutCard({ workout, user, addWorkoutLogItem }){
     const { id, name, intensity, duration } = workout
     const newWorkoutLog = {
         user_id: user.id,
-        workout_id: id
+        workout_id: id,
+        is_completed: false,
+        notes: ''
     }
 
     console.log('workout:', workout)
