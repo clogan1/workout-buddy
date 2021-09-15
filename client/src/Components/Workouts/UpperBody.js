@@ -1,10 +1,10 @@
 import WorkoutCard from './WorkoutCard'
 
-function UpperBody({ categories, user }){
+function UpperBody({ categories, user, addWorkoutLogItem }){
     const upperBodyCategory = categories.filter(category => category.name === 'Upper Body')
     // console.log(upperBodyCategory)
     const upperBodyWorkouts = upperBodyCategory[0].workouts.map(workout => (
-        <WorkoutCard workout={workout} user ={user}/>
+        <WorkoutCard key={workout.id} workout={workout} user ={user} addWorkoutLogItem={addWorkoutLogItem}/>
     ))
     // console.log(upperBodyWorkouts)
 

@@ -2,7 +2,7 @@ import React from 'react'
 import UserWorkoutItem from './UserWorkoutItem'
 import { useHistory } from "react-router-dom";
 
-function UserWorkoutList({ myWorkoutLog, workouts, handleSeeDetails }) {
+function UserWorkoutList({ myLog, workouts, handleSeeDetails, deleteWorkoutLogItem }) {
     let history = useHistory()
 
     // console.log(workout_logs)
@@ -28,8 +28,8 @@ function UserWorkoutList({ myWorkoutLog, workouts, handleSeeDetails }) {
                 </tr>
             </thead>
             <tbody>
-                {myWorkoutLog.map(log => (
-                    <UserWorkoutItem key={log.id} log={log} handleSeeDetails={handleSeeDetails}/>
+                {myLog.map(log => (
+                    <UserWorkoutItem key={log.id} log={log} handleSeeDetails={handleSeeDetails} deleteWorkoutLogItem={deleteWorkoutLogItem}/>
                 ))
                 }
             </tbody>

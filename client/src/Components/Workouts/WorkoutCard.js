@@ -1,6 +1,6 @@
 
 
-function WorkoutCard({ workout, user }){
+function WorkoutCard({ workout, user, addWorkoutLogItem }){
     const { id, name, intensity, duration } = workout
     const newWorkoutLog = {
         user_id: user.id,
@@ -16,7 +16,7 @@ function WorkoutCard({ workout, user }){
             body: JSON.stringify(newWorkoutLog)
         })
         .then(res => res.json())
-        .then(addedWorkout => console.log(addedWorkout))
+        .then(addedWorkout => addWorkoutLogItem(addedWorkout))
     }
 
     

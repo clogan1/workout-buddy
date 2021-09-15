@@ -3,18 +3,11 @@ import UserStats from './UserStats'
 import UserWorkoutList from './UserWorkoutList'
 import WorkoutDetailPage from './WorkoutDetailPage';
 
-function MyWorkoutBuddy({ user }) {
-    const [myWorkoutLog, setMyWorkoutLog] = useState([])
+function MyWorkoutBuddy({ user, myLog, deleteWorkoutLogItem }) {
     const [showDetail, setShowDetail] = useState(false)
     const [detailWorkout, setDetailWorkout] = useState('')
     const [detailLogId, setDetailLogId] = useState('')
     const {id, username, workout_logs, workouts, weekly_goal, total_workouts_completed } = user
-
-    useEffect(() => {
-        setMyWorkoutLog(workout_logs)
-    }, [])
-
-    console.log(myWorkoutLog)
 
     function handleSeeDetails(workout_id, log_id){
         // console.log("See details clicked!")
@@ -34,9 +27,10 @@ function MyWorkoutBuddy({ user }) {
             {(!showDetail) ?
                 (
                 <UserWorkoutList 
-                myWorkoutLog={myWorkoutLog} 
+                myLog={myLog} 
                     workouts={workouts} 
-                    handleSeeDetails={handleSeeDetails}/>
+                    handleSeeDetails={handleSeeDetails} 
+                    deleteWorkoutLogItem={deleteWorkoutLogItem}/>
                 )
                 :
                 ((detailWorkout !== '') ?
