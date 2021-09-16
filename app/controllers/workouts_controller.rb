@@ -1,7 +1,7 @@
 class WorkoutsController < ApplicationController
 
     def index
-        render json: Workout.all
+        render json: Workout.all.order('name ASC')
     end
 
     def show

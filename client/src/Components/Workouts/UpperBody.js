@@ -31,7 +31,10 @@ function UpperBody({ categories, user, addWorkoutLogItem }){
     const classes = useStyles()
     let upperBodyCategory = ((categories.length > 0) ? categories.filter(category => category.name === 'Upper Body') : [])
     console.log('CATEGORIES:', upperBodyCategory)
-    let upperBodyWorkouts = ((categories.length > 0) ? upperBodyCategory[0].workouts.map(workout => (
+    let upperBodyWorkouts = ((categories.length > 0) ? upperBodyCategory[0].workouts.sort((first, second) => {
+        if(second.name[0] > first.name[0]) return - 1
+    })
+    .map(workout => (
         <Grid item xs={12} key={workout.id}><WorkoutCard key={workout.id} workout={workout} user={user} addWorkoutLogItem={addWorkoutLogItem}/></Grid>
     )) : null)
     console.log('WORKOUTS:', upperBodyWorkouts)
