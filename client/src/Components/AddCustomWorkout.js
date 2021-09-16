@@ -74,6 +74,7 @@ function AddCustomWorkout({ categories, addWorkoutLogItem, user }) {
     const [durationData, setDurationData]=useState('')
     const [toggleExercises, setToggleExercises] = useState(false)
     const [ errors, setErrors ] = useState([])
+    const [ exErrors, setExErrors ] = useState([])
     const [newWorkoutObj, setNewWorkoutObj]= useState('')
     const [exerciseData, setExerciseData] = useState('')
     const [exerciseArr, setExerciseArr] = useState([])
@@ -124,13 +125,13 @@ function AddCustomWorkout({ categories, addWorkoutLogItem, user }) {
             if (res.ok) {
                 res.json().then(data => data)
             } else {
-                res.json().then(err => setErrors(err.errors))
+                res.json().then(err => setExErrors(err.errors))
             }
         }).then(fetch(`/exercises/${exerciseData}`)
         .then(res => res.json())
         .then(data => setDisplayExercise([...displayExercise,data])))
         :
-        console.log("Nope!")
+        setExErrors("Select an exercise.")
         }
     }
 
@@ -201,6 +202,22 @@ function AddCustomWorkout({ categories, addWorkoutLogItem, user }) {
                         Create Workout
                     </Button>
                     </form>
+                    {(errors.length > 0) ? 
+                            (
+                             <>
+                            <br></br>
+                            <br></br>
+                            <Box >
+                                {errors.map(err => (
+                                    <Typography className={classes.errorItem} key={err} color="error">{err}</Typography>
+                                ))
+                                }
+                                </Box>
+                            </>
+                            )
+                            :
+                            null
+                                }
                 </Grid>
                 { newWorkoutObj ?
                 (<Grid xs={12}>
