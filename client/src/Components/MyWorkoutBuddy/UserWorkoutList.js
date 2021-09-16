@@ -32,7 +32,7 @@ const useStyles = makeStyles({
   })
 
 
-function UserWorkoutList({ myLog, workouts, handleSeeDetails, deleteWorkoutLogItem }) {
+function UserWorkoutList({ myLog, workouts, handleSeeDetails, deleteWorkoutLogItem, setWeekly, setTotal, weekly, total }) {
     const classes = useStyles()
     let history = useHistory()
 
@@ -62,7 +62,11 @@ function UserWorkoutList({ myLog, workouts, handleSeeDetails, deleteWorkoutLogIt
             </TableHead>
             <TableBody>
                 {myLog.map(log => (
-                    <UserWorkoutItem key={log.id} log={log} handleSeeDetails={handleSeeDetails} deleteWorkoutLogItem={deleteWorkoutLogItem}/>
+                    <UserWorkoutItem key={log.id} log={log} handleSeeDetails={handleSeeDetails} deleteWorkoutLogItem={deleteWorkoutLogItem}
+                    setTotal={setTotal}
+                    setWeekly={setWeekly}
+                    weekly={weekly}
+                    total={total}/>
                 ))
                 }
             </TableBody>

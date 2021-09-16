@@ -23,7 +23,7 @@ const useStyles = makeStyles({
       }
   })
 
-function UserWorkoutItem({log, handleSeeDetails, deleteWorkoutLogItem}) {
+function UserWorkoutItem({log, handleSeeDetails, deleteWorkoutLogItem, setTotal, setWeekly, weekly, total}) {
     const classes = useStyles()
 
     const [workout, setWorkout] = useState([])
@@ -60,6 +60,8 @@ function UserWorkoutItem({log, handleSeeDetails, deleteWorkoutLogItem}) {
         .then(data => {
             console.log(data)
             setCompletedButton(true)
+            setTotal((total) => total + 1)
+            setWeekly((weekly) => weekly + 1)
         })
     }
 
@@ -71,6 +73,8 @@ function UserWorkoutItem({log, handleSeeDetails, deleteWorkoutLogItem}) {
             headers: { Accept: 'application/json' }
         })
         .then(deleteWorkoutLogItem(id))
+        setTotal((total) => total - 1)
+        setWeekly((weekly) => weekly - 1)
     }
 
     return (
