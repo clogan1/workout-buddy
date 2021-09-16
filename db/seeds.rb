@@ -112,12 +112,13 @@ stairclimber = Exercise.create(title: 'stair climber', recommended_reps: '1 x 5 
 jumpingjacks = Exercise.create(title: 'jumping jacks', recommended_reps: '3 x 1 minute')
 
 
-puts ' workouts'
+puts 'workouts'
 puts 'core'
 workout10 = Workout.create(category_id: core.id, intensity: 2, duration: 15, name: "Planks on Planks")
 workout11 = Workout.create(category_id: core.id, intensity: 2, duration: 15, name: "Quick Core Circuit")
 workout12 = Workout.create(category_id: core.id, intensity: 1, duration: 15, name: "Beginner's Core")
 workout13 = Workout.create(category_id: core.id, intensity: 3, duration: 10, name: "10-min 6-pack")
+core1 = Workout.create(category_id: core.id, intensity: 3, duration: 30, name: "Core Challenge")
 
 
 puts 'upper'
@@ -126,6 +127,7 @@ workout21 = Workout.create(category_id: upper_body.id, intensity: 2, duration: 4
 workout22 = Workout.create(category_id: upper_body.id, intensity: 2, duration: 20, name: "Dumbbell Routine")
 workout23 = Workout.create(category_id: upper_body.id, intensity: 1, duration: 20, name: "Body Weight Only Upper Body Burn")
 workout24 = Workout.create(category_id: upper_body.id, intensity: 2, duration: 10, name: "Toned Arms in 10")
+upper1 = Workout.create(category_id: upper_body.id, intensity: 2, duration: 10, name: "Toned Arms in 10")
 
 
 puts 'lower'

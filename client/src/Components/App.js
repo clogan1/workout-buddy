@@ -35,7 +35,7 @@ const useStyles = makeStyles({
 })
 
 function App() {
-  const classes = useStyles()
+ const classes = useStyles()
 
  const [user, setUser] = useState()
  const [categories, setCategories] = useState([])

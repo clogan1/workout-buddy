@@ -5,25 +5,21 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
     container: {
-        // display: 'flex',
-        // flexDirection: 'row',
-        // justifyContent: 'center',
-        // alignItems: 'center',
         // backgroundColor: '#2E2E38',
-        height: '100vh',
-        width: '100%',
-        // marginTop: '20px',
-        // paddingTop: '30px'
+        // height: '100vh',
+        width: '100%'
     },
     title: {
-        // display: 'flex',
-        // flexDirection: 'row',
-        // justifyContent: 'center',
-        // alignItems: 'center',
-        // backgroundColor: 'red',
-        marginTop: '20px',
-        paddingTop: '30px',
         textAlign: 'center'
+    },
+    workoutCard: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: 'auto',
+        // backgroundColor: 'blue',
+        width: '100%'
     }
 })
 
@@ -42,10 +38,10 @@ function Core({ categories, user, addWorkoutLogItem }){
                     <Grid item xs={12}>
                         <Typography varient='h1' style={{fontSize: '60px'}} className={classes.title}>{coreCategory[0].name}</Typography>
                     </Grid>
-                    <ol>
+                    <Grid item xs ={12} className={classes.workoutCard}>
                         {coreWorkouts}
-                    </ol>
-                </Grid>)
+                    </Grid>
+                </Grid>) 
                 :
                 null
             }

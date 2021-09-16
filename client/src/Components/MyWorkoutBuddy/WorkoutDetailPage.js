@@ -76,7 +76,7 @@ function WorkoutDetailPage({ detailWorkout, detailLogId, setShowDetail, setDetai
                     <Box p={2} flex={'auto'}>
                         <p><strong>EXERCISES</strong></p>
                         {detailWorkout.exercises.map(exercise => (
-                            <p key={exercise.id}>{exercise.title} &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; recommended reps: {exercise.recommended_reps ? `${exercise.recommended_reps}` : `n/a` } &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp; equipment: {exercise.equipment ? exercise.equipment : "none"}</p>
+                            <p key={exercise.id}>{exercise.title} &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; recommended reps: {exercise.recommended_reps ? `${exercise.recommended_reps}` : `n/a`} &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp; equipment: {exercise.equipment ? exercise.equipment : "none"}</p>
                         ))
                         }
                     </Box>
