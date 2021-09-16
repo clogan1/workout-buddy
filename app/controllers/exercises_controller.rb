@@ -1,6 +1,6 @@
 class ExercisesController < ApplicationController
     def index
-        render json: Exercise.all
+        render json: Exercise.all.order('title ASC')
     end
 
     def show

@@ -30,7 +30,10 @@ const useStyles = makeStyles({
 function LowerBody({ categories, user, addWorkoutLogItem }){
     const classes = useStyles()
     const lowerBodyCategory = ((categories.length > 0) ? categories.filter(category => category.name === 'Lower Body') : [])
-    const lowerBodyWorkouts = ((categories.length > 0) ? lowerBodyCategory[0].workouts.map(workout => (
+    const lowerBodyWorkouts = ((categories.length > 0) ? lowerBodyCategory[0].workouts.sort((first, second) => {
+        if(second.name[0] > first.name[0]) return - 1
+    })
+    .map(workout => (
         <Grid item xs={12} key={workout.id}><WorkoutCard key={workout.id} workout={workout} user={user} addWorkoutLogItem={addWorkoutLogItem}/></Grid>
     )) : null)
 

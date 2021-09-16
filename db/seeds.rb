@@ -49,9 +49,32 @@ WorkoutExercise.create(workout_id: workout3.id, exercise_id: crunch.id)
 WorkoutExercise.create(workout_id: workout4.id, exercise_id: running.id)
 
 puts 'Creating workout_log'
-WorkoutLog.create(user_id: claire.id, workout_id: 1, is_completed: false, notes: '')
-WorkoutLog.create(user_id: josh.id, workout_id: 4, is_completed: false, notes: '')
-WorkoutLog.create(user_id: josh.id, workout_id: 3, is_completed: false, notes: '')
+aug_date = 30.days.seconds.ago
+july_date = 60.days.seconds.ago
+july2 = 80.days.seconds.ago
+
+WorkoutLog.create(user_id: claire.id, workout_id: Workout.all.ids.sample, is_completed: false, notes: '')
+WorkoutLog.create(user_id: josh.id, workout_id: Workout.all.ids.sample, is_completed: false, notes: '')
+WorkoutLog.create(user_id: sam.id, workout_id: Workout.all.ids.sample, is_completed: false, notes: '')
+WorkoutLog.create(user_id: claire.id, workout_id: Workout.all.ids.sample, is_completed: false, notes: '')
+WorkoutLog.create(user_id: josh.id, workout_id: Workout.all.ids.sample, is_completed: false, notes: '')
+WorkoutLog.create(user_id: josh.id, workout_id: Workout.all.ids.sample, is_completed: false, notes: '')
+
+WorkoutLog.create(user_id: claire.id, workout_id: Workout.all.ids.sample, is_completed: true, notes: '', date_completed: aug_date)
+WorkoutLog.create(user_id: josh.id, workout_id: Workout.all.ids.sample, is_completed: true, notes: '', date_completed: aug_date)
+WorkoutLog.create(user_id: sam.id, workout_id: Workout.all.ids.sample, is_completed: true, notes: '', date_completed: aug_date)
+WorkoutLog.create(user_id: claire.id, workout_id: Workout.all.ids.sample, is_completed: true, notes: '', date_completed: aug_date)
+WorkoutLog.create(user_id: josh.id, workout_id: Workout.all.ids.sample, is_completed: true, notes: '', date_completed: aug_date)
+WorkoutLog.create(user_id: sam.id, workout_id: Workout.all.ids.sample, is_completed: true, notes: '', date_completed: aug_date)
+
+WorkoutLog.create(user_id: claire.id, workout_id: Workout.all.ids.sample, is_completed: true, notes: '', date_completed: july_date)
+WorkoutLog.create(user_id: josh.id, workout_id: Workout.all.ids.sample, is_completed: true, notes: '', date_completed: july_date)
+WorkoutLog.create(user_id: sam.id, workout_id: Workout.all.ids.sample, is_completed: true, notes: '', date_completed: july_date)
+
+WorkoutLog.create(user_id: claire.id, workout_id: Workout.all.ids.sample, is_completed: true, notes: '', date_completed: july2)
+WorkoutLog.create(user_id: josh.id, workout_id: Workout.all.ids.sample, is_completed: true, notes: '', date_completed: july2)
+WorkoutLog.create(user_id: sam.id, workout_id: Workout.all.ids.sample, is_completed: true, notes: '', date_completed: july2)
+
 
 
 puts '✅ Seeding done...'

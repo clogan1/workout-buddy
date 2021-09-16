@@ -11,7 +11,7 @@ import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles({
     root: {
-      minWidth: 650,
+      minWidth: 700,
       borderRadius: 12,
       backgroundColor: '#2E2E38',
       color: 'white',
