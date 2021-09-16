@@ -54,9 +54,9 @@ function WorkoutsPage() {
             <Link to='/categories/1'>
                <Grid item xs={6} className={classes.gridItem}>
                   <Card className={classes.workoutTile}>
-                        <Typography varient='h1' style={{fontSize: '40px'}}><strong>Upper Body</strong></Typography>
+                        <Typography variant='h4' ><strong>Upper Body</strong></Typography>
                         <IconButton aria-label=" Upper Body">
-                           <FitnessCenterIcon style={{fontSize: '80px', color: grey[50]}}/>
+                           <FitnessCenterIcon style={{fontSize: '70px', color: grey[50]}}/>
                         </IconButton>
                   </Card>
                </Grid>
@@ -64,9 +64,9 @@ function WorkoutsPage() {
              <Link to='/categories/2'>
                <Grid item xs={6} className={classes.gridItem}>
                   <Card className={classes.workoutTile}>
-                        <Typography varient='h1' style={{fontSize: '40px'}}><strong>Lower Body</strong></Typography>
+                        <Typography variant='h4' ><strong>Lower Body</strong></Typography>
                         <IconButton aria-label="Lower Body">
-                           <AirlineSeatLegroomExtraIcon style={{fontSize: '80px', color: grey[50]}}/>
+                           <AirlineSeatLegroomExtraIcon style={{fontSize: '70px', color: grey[50]}}/>
                         </IconButton>
                   </Card>
                </Grid>
@@ -74,9 +74,9 @@ function WorkoutsPage() {
              <Link to='/categories/3'>
                <Grid item xs={6} className={classes.gridItem}> 
                   <Card className={classes.workoutTile}>
-                        <Typography varient='h1' style={{fontSize: '40px'}}><strong>Core</strong></Typography>
+                        <Typography variant='h4' ><strong>Core</strong></Typography>
                         <IconButton aria-label="Core">
-                           <Brightness5Icon style={{fontSize: '80px', color: grey[50]}}/>
+                           <Brightness5Icon style={{fontSize: '70px', color: grey[50]}}/>
                         </IconButton>
                   </Card>
                </Grid>
@@ -84,9 +84,9 @@ function WorkoutsPage() {
              <Link to='/categories/4'>
                <Grid item xs={6} className={classes.gridItem}>
                   <Card className={classes.workoutTile}>
-                        <Typography varient='h1' style={{fontSize: '40px'}}><strong>Cardio</strong></Typography>
+                        <Typography variant='h4' ><strong>Cardio</strong></Typography>
                         <IconButton aria-label="Cardio">
-                           <DirectionsRunIcon style={{fontSize: '80px', color: grey[50]}}/>
+                           <DirectionsRunIcon style={{fontSize: '70px', color: grey[50]}}/>
                         </IconButton>
                   </Card>
                </Grid>

@@ -17,7 +17,7 @@ const useStyles = makeStyles({
     header: {
     //   backgroundColor: 'green',
       float: 'left',
-      marginRight: '50%',
+      marginRight: '40%',
     },
     boxes: {
         marginTop:'20px',
@@ -28,6 +28,10 @@ const useStyles = makeStyles({
       },
       text: {
           color:'white'
+      },
+      button: {
+          marginRight: '10px',
+          marginLeft: '10px'
       }
   })
 
@@ -43,11 +47,16 @@ function UserWorkoutList({ myLog, workouts, handleSeeDetails, deleteWorkoutLogIt
         history.push('/workouts')
     }
 
+    function handleRouteAddWorkout() {
+        history.push('/addworkout')
+    }
+
     return (
         <Grid xs={12}>
         <Box className={classes.boxes}>
         <Typography variant="h5" className={classes.header}>Upcoming Workouts</Typography>
-        <Button color="primary" variant="contained" onClick={handleRouteWorkouts} >Add More Workouts</Button>
+        <Button color="primary" className={classes.button} variant="contained" onClick={handleRouteWorkouts} >Find Workouts</Button>
+        <Button color="primary" className={classes.button} variant="contained" onClick={handleRouteAddWorkout} >Create Workouts</Button>
         </Box>
         <TableContainer>
         <Table className={classes.table}>
