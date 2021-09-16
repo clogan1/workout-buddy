@@ -17,7 +17,7 @@ const useStyles = makeStyles({
     header: {
     //   backgroundColor: 'green',
       float: 'left',
-      marginRight: '40%',
+      marginRight: '35%',
     },
     boxes: {
         marginTop:'20px',
@@ -52,7 +52,7 @@ function UserWorkoutList({ myLog, workouts, handleSeeDetails, deleteWorkoutLogIt
     }
 
     return (
-        <Grid xs={12}>
+        <Grid xs={12} item>
         <Box className={classes.boxes}>
         <Typography variant="h5" className={classes.header}>Upcoming Workouts</Typography>
         <Button color="primary" className={classes.button} variant="contained" onClick={handleRouteWorkouts} >Find Workouts</Button>

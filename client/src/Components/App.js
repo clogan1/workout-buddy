@@ -1,5 +1,4 @@
 import { ThemeProvider, createTheme } from '@material-ui/core'
-import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core'
 import '../App.css';
 import Login from "./Login"
@@ -54,7 +53,7 @@ function App() {
    })
   }, [])
 
-  console.log("my log:", myLog)
+  // console.log("my log:", myLog)
 
   useEffect(() => {
     fetch('/categories')
@@ -85,7 +84,7 @@ function App() {
     setLog(updatedLog)
   }
 
-  console.log(user)
+  // console.log(user)
 
   if(!user) return <Login setUser={setUser} setLog={setLog}/> 
 

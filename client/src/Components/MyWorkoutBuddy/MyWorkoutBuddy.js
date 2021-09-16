@@ -4,7 +4,6 @@ import UserWorkoutList from './UserWorkoutList'
 import WorkoutDetailPage from './WorkoutDetailPage';
 import { makeStyles } from '@material-ui/core'
 import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 
@@ -52,7 +51,7 @@ function MyWorkoutBuddy({ user, myLog, deleteWorkoutLogItem }) {
     return (
         <Container className={classes.box}>
             <Grid container spacing={3}>
-                <Grid xs={12} className={classes.center}>
+                <Grid xs={12} item className={classes.center}>
                 <Typography variant="h4"><strong>{username}'s Workout Buddy</strong></Typography>
                 </Grid>
                 <UserStats weekly_goal={weekly_goal} total={total} weekly={weekly} completed_workouts_by_week={completed_workouts_by_week}/>

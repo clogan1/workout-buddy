@@ -53,7 +53,7 @@ function WorkoutDetailPage({ detailWorkout, detailLogId, setShowDetail, setDetai
     }
 
     return (
-        <Grid xs={12}>
+        <Grid item xs={12}>
             <Card className={classes.root} variant="outlined">
                 <CardContent>
                     <Typography variant="h5"><strong>{detailWorkout.name}</strong></Typography>

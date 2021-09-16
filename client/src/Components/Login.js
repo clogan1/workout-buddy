@@ -1,8 +1,6 @@
 import LoginForm from './LoginForm';
 import SignUpForm from './SignUpForm';
 import { useState } from 'react';
-import Container from '@material-ui/core/Container';
-import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core'
@@ -35,7 +33,6 @@ const useStyles = makeStyles({
         height: '500px',
         justifyContent: 'center',
         display: 'flex',
-        justifyContent: 'center',
         alignItems: 'center',
     },
     logoText: {
@@ -55,7 +52,7 @@ const [showLogin, setShowLogin] = useState(true)
     return (
         <Grid container className={classes.container} > 
             <Grid item  xs={4} className={classes.boxes}>
-                <Box title>
+                <Box >
                 <Typography variant="h5">Welcome to</Typography>
                 <Typography variant="h2"><strong>Workout Buddy</strong></Typography>
                 </Box>

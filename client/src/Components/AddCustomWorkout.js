@@ -7,7 +7,6 @@ import { makeStyles } from '@material-ui/core'
 import Divider from '@material-ui/core/Divider';
 import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import { useHistory } from 'react-router-dom'
 
@@ -154,12 +153,12 @@ function AddCustomWorkout({ categories, addWorkoutLogItem, user }) {
 
     }
 
-    console.log(displayExercise)
+    // console.log(displayExercise)
 
     return (
         <Container className={classes.box}>
             <Grid container spacing={3} className={classes.mainGrid}>
-                <Grid xs={12} className={classes.center}>
+                <Grid item xs={12} className={classes.center}>
                 <Typography variant="h4"><strong>Add a Custom Workout</strong></Typography>
                 </Grid>
                 <Grid className={toggleExercises ? classes.hide : null}>

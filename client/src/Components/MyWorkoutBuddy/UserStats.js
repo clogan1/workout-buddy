@@ -2,7 +2,7 @@ import React from 'react'
 import Grid from '@material-ui/core/Grid';
 import { makeStyles, TableSortLabel } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
-import { LineChart, AreaChart } from 'react-chartkick';
+import { AreaChart } from 'react-chartkick';
 import 'chartkick/chart.js'
 
 const useStyles = makeStyles({
@@ -32,21 +32,21 @@ const useStyles = makeStyles({
 function UserStats({ weekly_goal, total, weekly, completed_workouts_by_week }) {
     const classes = useStyles()
 
-    console.log(completed_workouts_by_week)
+    // console.log(completed_workouts_by_week)
 
     // let thisWeek = Object.values(workouts_this_week)[0]
 
     return (
         <>
-            <Grid xs={6} className={classes.dataBox}>
+            <Grid xs={6} item className={classes.dataBox}>
                 <Typography variant="h3" className={classes.numbers}><strong>{total}</strong></Typography>
                 <Typography>all-time workouts completed</Typography>
             </Grid>
-            <Grid xs={6} className={classes.dataBox}>
+            <Grid xs={6} item className={classes.dataBox}>
                 <Typography variant="h3" className={classes.numbers}><strong>{weekly} / {weekly_goal}</strong></Typography>
                 <Typography>workouts completed this week</Typography>
             </Grid>
-            <Grid xs={12} className={classes.chart}>
+            <Grid xs={12} item className={classes.chart}>
             <AreaChart height="100px"  colors={["#6F2DBD"]}
             options={{
                 legend: {
@@ -64,6 +64,3 @@ function UserStats({ weekly_goal, total, weekly, completed_workouts_by_week }) {
 
 export default UserStats
 
-// library: { 
-//     vAxis: { baselineColor: "#F76161",  gridlines: {Color: "" }, textStyle: { color: "#76BDD1"}, titleTextStyle: {color: "#F76161"} }, 
-//     hAxis: { baselineColor: "#F76161" , gridlines: {Color: "" }, textStyle: { color: "#76BDD1"} , titleTextStyle: {color: "#F76161"} } } %>   

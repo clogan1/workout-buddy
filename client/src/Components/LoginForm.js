@@ -1,7 +1,6 @@
 import React from 'react';
 import {useState} from 'react';
 import { useHistory } from "react-router-dom"
-import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core';
@@ -77,7 +76,7 @@ function LoginForm({setUser, setLog}) {
         
     return(
         <Container className={classes.formDiv}>
-            <form onSubmit={handleSubmit} autocomplete="off">
+            <form onSubmit={handleSubmit} autoComplete="off">
             <Typography className={classes.labels}>username:</Typography>
             <input 
             type="text"
