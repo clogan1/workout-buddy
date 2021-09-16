@@ -1,18 +1,37 @@
 import React from 'react'
+import Grid from '@material-ui/core/Grid';
+import { makeStyles, TableSortLabel } from '@material-ui/core'
+import Typography from '@material-ui/core/Typography'
 
-function UserStats({ weekly_goal, total_workouts_completed, workouts_this_week }) {
-    let thisWeek = Object.values(workouts_this_week)[0]
+const useStyles = makeStyles({
+    dataBox: {
+    //   backgroundColor: 'green',
+      textAlign: 'center',
+      paddingBottom: '10px',
+      paddingTop: '10px',
+      marginBottom: '20px',
+      marginTop: '20px'
+    },
+    numbers : {
+        color: '#6F2DBD'
+    }
+  })
+
+function UserStats({ weekly_goal, total, weekly }) {
+    const classes = useStyles()
+
+    // let thisWeek = Object.values(workouts_this_week)[0]
 
     return (
         <>
-            <div>
-                <h3>{total_workouts_completed}</h3>
-                <p>all-time workouts completed</p>
-            </div>
-            <div>
-                <h3>{thisWeek} of {weekly_goal}</h3>
-                <p>workouts completed this week</p>
-            </div>
+            <Grid xs={6} className={classes.dataBox}>
+                <Typography variant="h3" className={classes.numbers}><strong>{total}</strong></Typography>
+                <Typography>all-time workouts completed</Typography>
+            </Grid>
+            <Grid xs={6} className={classes.dataBox}>
+                <Typography variant="h3" className={classes.numbers}><strong>{weekly} / {weekly_goal}</strong></Typography>
+                <Typography>workouts completed this week</Typography>
+            </Grid>
         </>
     )
 }

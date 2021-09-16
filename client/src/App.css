@@ -1,3 +1,11 @@
+html, body {
+  background-color: #1E1E24;
+}
+
+a:link {
+  text-decoration: none;
+}
+
 .App {
   text-align: center;
 }

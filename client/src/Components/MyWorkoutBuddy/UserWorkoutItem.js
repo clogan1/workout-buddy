@@ -1,6 +1,31 @@
+import TableCell from '@material-ui/core/TableCell';
+import TableRow from '@material-ui/core/TableRow';
 import { useState, useEffect } from 'react'
+import { makeStyles } from '@material-ui/core'
+import CheckIcon from '@material-ui/icons/Check';
+import CheckBoxIcon from '@material-ui/icons/CheckBox';
+import { grey } from '@material-ui/core/colors';
+import Button from '@material-ui/core/Button'
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 
-function UserWorkoutItem({log, handleSeeDetails, deleteWorkoutLogItem}) {
+
+const useStyles = makeStyles({
+      text: {
+          color:'white'
+      },
+      icons : {
+          marginRight: '5px',
+          marginLeft: '5px',
+          width: '30px'
+      }
+  })
+
+function UserWorkoutItem({log, handleSeeDetails, deleteWorkoutLogItem, setTotal, setWeekly, weekly, total}) {
+    const classes = useStyles()
+
     const [workout, setWorkout] = useState([])
     const [completedButton, setCompletedButton] = useState(false)
     const { id, is_completed, notes, workout_id, created_at, date_completed, user_id} = log
@@ -35,6 +60,8 @@ function UserWorkoutItem({log, handleSeeDetails, deleteWorkoutLogItem}) {
         .then(data => {
             console.log(data)
             setCompletedButton(true)
+            setTotal((total) => total + 1)
+            setWeekly((weekly) => weekly + 1)
         })
     }
 
@@ -46,31 +73,43 @@ function UserWorkoutItem({log, handleSeeDetails, deleteWorkoutLogItem}) {
             headers: { Accept: 'application/json' }
         })
         .then(deleteWorkoutLogItem(id))
+        setTotal((total) => total - 1)
+        setWeekly((weekly) => weekly - 1)
     }
 
     return (
-        <tr>
+        <TableRow >
             {(workout.length !== 0) ? (
                 <>
-                <td>{dateAdded}</td>
-                <td>{workout.category.name}</td>
-                <td>{workout.name}</td>
-                <td>
+                <TableCell className={classes.text}>{dateAdded}</TableCell>
+                <TableCell className={classes.text}>{workout.category.name}</TableCell>
+                <TableCell className={classes.text}>{workout.name}</TableCell>
+                <TableCell className={classes.text}>
                     {workout.exercises.map(exercise => (
                         <li key={exercise.id}>{exercise.title}</li>
                     ))    
                     }
-                </td>
+                </TableCell>
                 </>
             ) :
             null
             }
-            <td>
-                {completedButton? <span>COMPLETED</span> : <button onClick={handleComplete}>Complete</button>}
-                <button onClick={() => handleSeeDetails(workout.id, id)}>See Details</button>
-                <button onClick={handleDelete}>Delete</button>
-            </td>
-        </tr>
+            <TableCell >
+                {completedButton? 
+                    <CheckIcon className={classes.icons} style={{ color: grey[50] }} size="small"/> 
+                    : 
+                    <IconButton onClick={handleComplete} className={classes.icons}>
+                        <CheckBoxOutlineBlankIcon fontSize="small" style={{ color: grey[50] }}/>
+                    </IconButton>
+                }
+                <IconButton  size="small" variant="outlined" color="secondary" onClick={() => handleSeeDetails(workout.id, id)} className={classes.icons}>
+                    <VisibilityIcon fontSize="small" style={{ color: grey[50] }}/>
+                </IconButton>
+                <IconButton onClick={handleDelete} className={classes.icons}>
+                    <DeleteIcon fontSize="small" style={{ color: grey[50] }} />
+                </IconButton>
+            </TableCell>
+        </TableRow>
         )
 }
 export default UserWorkoutItem

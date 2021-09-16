@@ -1,3 +1,6 @@
+import { ThemeProvider, createTheme } from '@material-ui/core'
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core'
 import '../App.css';
 import Login from "./Login"
 import { Switch, Route } from "react-router-dom";
@@ -7,9 +10,31 @@ import WorkoutsPage from './Workouts/WorkoutsPage';
 import UpperBody from './Workouts/UpperBody';
 import LowerBody from './Workouts/LowerBody';
 import Core from './Workouts/Core';
-import Cardio from './Workouts/Cardio'; 
+import Cardio from './Workouts/Cardio';
+import NavBar from './NavBar';
+import Container from '@material-ui/core/Container';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#6F2DBD'
+    },
+    secondary: {
+      main: '#3A3838'
+    }
+  }
+});
+
+const useStyles = makeStyles({
+  app: {
+    color: 'white',
+    backgroundColor: '#1E1E24',
+    display: 'flex'
+  }
+})
 
 function App() {
+  const classes = useStyles()
 
  const [user, setUser] = useState()
  const [categories, setCategories] = useState([])
@@ -44,6 +69,7 @@ function App() {
     }).then((r) => {
       if(r.ok){
         setUser(null)
+        setLog([])
       }
     })
   }
@@ -60,34 +86,35 @@ function App() {
 
   console.log(user)
 
-  if(!user) return <Login setUser={setUser}/> 
+  if(!user) return <Login setUser={setUser} setLog={setLog}/> 
 
 
   return (
-    <div className="App">
-      <h1>Workout Buddy</h1>
-      {user? <button onClick={handleSignoutClick}>Sign Out</button> : null}
-      <Switch>
-        <Route path='/myworkoutbuddy'>
-          <MyWorkoutBuddy user={user} myLog={myLog} deleteWorkoutLogItem={deleteWorkoutLogItem}/>
-        </Route>
-        <Route path='/workouts'>
-          <WorkoutsPage />
-        </Route>
-        <Route path='/categories/1'>
-          <UpperBody user ={user} categories={categories} addWorkoutLogItem={addWorkoutLogItem}/>
-        </Route>
-        <Route path='/categories/2'>
-          <LowerBody user ={user} categories={categories} addWorkoutLogItem={addWorkoutLogItem}/>
-        </Route>
-        <Route path='/categories/3'>
-          <Core user ={user} categories={categories} addWorkoutLogItem={addWorkoutLogItem}/>
-        </Route>
-        <Route path='/categories/4'>
-          <Cardio user ={user} categories={categories} addWorkoutLogItem={addWorkoutLogItem}/>
-        </Route>
-      </Switch>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Container className={classes.app}>
+        <NavBar handleSignoutClick={handleSignoutClick}/>
+        <Switch>
+          <Route path='/myworkoutbuddy'>
+            <MyWorkoutBuddy user={user} myLog={myLog} deleteWorkoutLogItem={deleteWorkoutLogItem}/>
+          </Route>
+          <Route path='/workouts'>
+            <WorkoutsPage />
+          </Route>
+          <Route path='/categories/1'>
+            <UpperBody user ={user} categories={categories} addWorkoutLogItem={addWorkoutLogItem}/>
+          </Route>
+          <Route path='/categories/2'>
+            <LowerBody user ={user} categories={categories} addWorkoutLogItem={addWorkoutLogItem}/>
+          </Route>
+          <Route path='/categories/3'>
+            <Core user ={user} categories={categories} addWorkoutLogItem={addWorkoutLogItem}/>
+          </Route>
+          <Route path='/categories/4'>
+            <Cardio user ={user} categories={categories} addWorkoutLogItem={addWorkoutLogItem}/>
+          </Route>
+        </Switch>
+      </Container>
+    </ThemeProvider>
   );
 }
 

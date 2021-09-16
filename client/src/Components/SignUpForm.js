@@ -1,7 +1,40 @@
 import { useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import Button from '@material-ui/core/Button';
+import Container from '@material-ui/core/Container';
+import { makeStyles } from '@material-ui/core';
+import Box from '@material-ui/core/Box';
+import Typography from '@material-ui/core/Typography';
+
+const useStyles = makeStyles({
+  formDiv: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column',
+    margin: '0 auto',
+    // backgroundColor: 'pink',
+    height: '400px',
+  },
+  formItems : {
+    marginTop: '5px',
+    marginBottom: '5px',
+    backgroundColor: '#e0e0e0',
+    width: '300px',
+    height: '30px'
+  },
+  labels: {
+    textAlign: 'left'
+  },
+  errorItem: {
+    marginTop: '5px',
+    marginBottom: '5px',
+    fontSize: '12px'
+  }
+})
 
 function SignUpForm({ setUser }) {
+    const classes = useStyles()
     const [ username, setUsername ] = useState('')
     const [ password, setPassword ] = useState('')
     const [ passwordConfirmation, setPasswordConfirmation ] = useState('')
@@ -37,30 +70,19 @@ function SignUpForm({ setUser }) {
     // console.log(errors)
 
     return (
-        <>
-            <form onSubmit={handleSignUpSubmit}>
-                <label>
-                    Username
-                    <input type='text' value={username} onChange={(e) => setUsername(e.target.value)}/>
-                </label>
-                <label>
-                    Password
-                    <input type='password' value={password} onChange={(e) => setPassword(e.target.value)}/>
-                </label>
-                <label>
-                    Confirm Password
-                    <input type='password' value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)}/>
-                </label>
-                <label>
-                    Avatar URL
-                    <input type='text' value={avatarUrl} onChange={(e) => setAvatarUrl(e.target.value)}/>
-                </label>
-                <label>
-                    Set a weekly goal:
-                    <em>
-                        Goals are helpful for keeping you motivated an on track. We recommend starting small and working your way up...
-                    </em>
-                    <select onChange={(e) => setWeeklyGoal(e.target.value)}>
+        <Container className={classes.formDiv}>
+            <form onSubmit={handleSignUpSubmit}  autocomplete="off">
+            <Typography className={classes.labels}>username:</Typography>
+            <input type='text' className={classes.formItems} value={username} onChange={(e) => setUsername(e.target.value)}/>
+            <Typography className={classes.labels}>password:</Typography>
+            <input type='password' value={password} className={classes.formItems}  onChange={(e) => setPassword(e.target.value)}/>
+            <Typography className={classes.labels}>confirm password:</Typography>
+                    <input type='password' className={classes.formItems} value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)}/>
+            <Typography className={classes.labels}>avatar url:</Typography>
+                    <input type='text' value={avatarUrl} className={classes.formItems} onChange={(e) => setAvatarUrl(e.target.value)}/>
+                    <Typography className={classes.labels}>set a weekly goal:
+                        </Typography>
+                    <select onChange={(e) => setWeeklyGoal(e.target.value)} className={classes.formItems}>
                         <option value="0">--</option>
                         <option value='1'>1</option> 
                         <option value='2'>2</option> 
@@ -70,24 +92,37 @@ function SignUpForm({ setUser }) {
                         <option value='6'>6</option> 
                         <option value='7'>7</option> 
                     </select>
-                </label>
-                <input type='submit' value='Get Started'/>
+                    <br></br>
+                    <br></br>
+                <Button type='submit' color="primary" variant="contained">
+                    Get Started
+                </Button>
             </form>
             {(errors.length > 0) ? 
             (
-                <ul>
+                <>
+                <Box >
                     {errors.map(err => (
-                        <li key={err}>{err}</li>
+                        <Typography className={classes.errorItem} key={err} color="error">{err}</Typography>
                     ))
                     }
-                </ul>
-
+                </Box>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                </>
             )
             :
             null
             }
-        </>
+        </Container>
     )
 }
 
 export default SignUpForm
+
+
+{/* <em>
+Goals are helpful for keeping you motivated an on track. We recommend starting small and working your way up... 
+</em> */}
