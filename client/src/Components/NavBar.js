@@ -25,17 +25,22 @@ const useStyles = makeStyles({
     },
     drawerPaper: {
         width: drawerWidth,
-        backgroundColor: '#3A3838',
+        backgroundColor: '#2E2E38',
         color: grey[50]
     },
     active: {
-        backgroundColor: '#312E2E'
+        backgroundColor: '#2E2E38'
     },
     logo: {
         padding: '10px',
     },
     listItem: {
         fontWeight: 'bolder'
+    },
+    signOut: {
+        fontSize: '16px',
+        marginTop: '200%',
+        paddingLeft: '70px'
     }
 })
 
@@ -82,8 +87,7 @@ function NavBar({ handleSignoutClick }) {
                 ))}
             </List>
             <br></br>
-            <Button onClick={handleSignoutClick} >Sign Out</Button>
-
+            <span  className={classes.signOut} onClick={handleSignoutClick} >sign out</span>
         </Drawer>
 
     )

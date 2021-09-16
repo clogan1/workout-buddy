@@ -28,7 +28,7 @@ const theme = createTheme({
 const useStyles = makeStyles({
   app: {
     color: 'white',
-    backgroundColor: '#282626',
+    backgroundColor: '#1E1E24',
     display: 'flex'
   }
 })
