@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
-
+import Card from '@material-ui/core/Card';
 
 const useStyles = makeStyles({
    workoutTile: {
@@ -26,6 +26,8 @@ const useStyles = makeStyles({
       justifyContent: 'center',
       alignItems: 'center',
       // backgroundColor: 'red',
+      marginTop: '20px',
+      paddingTop: '30px',
       height: '100vh'
    }
 })

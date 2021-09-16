@@ -2,19 +2,13 @@ import WorkoutCard from './WorkoutCard'
 import { makeStyles } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography';
-import Card from '@material-ui/core/Card';
+
 
 const useStyles = makeStyles({
     container: {
-        // display: 'flex',
-        // flexDirection: 'row',
-        // justifyContent: 'center',
-        // alignItems: 'center',
         // backgroundColor: '#2E2E38',
-        height: '100vh',
-        width: '100%',
-        // marginTop: '20px',
-        // paddingTop: '30px'
+        // height: '100vh',
+        width: '100%'
     },
     title: {
         // display: 'flex',
@@ -22,9 +16,16 @@ const useStyles = makeStyles({
         // justifyContent: 'center',
         // alignItems: 'center',
         // backgroundColor: 'red',
-        marginTop: '20px',
-        paddingTop: '30px',
         textAlign: 'center'
+    },
+    workoutCard: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: 'auto',
+        // backgroundColor: 'blue',
+        width: '100%'
     }
 })
 
@@ -41,16 +42,14 @@ function UpperBody({ categories, user, addWorkoutLogItem }){
     return (
         <>
             {(categories.length > 0) ?
-                (
-                <Grid container className={classes.container}>
+                (<Grid container className={classes.container}>
                     <Grid item xs={12}>
                         <Typography varient='h1' style={{fontSize: '60px'}} className={classes.title}>{upperBodyCategory[0].name}</Typography>
                     </Grid>
-                    <ol>
+                    <Grid item xs ={12} className={classes.workoutCard}>
                         {upperBodyWorkouts}
-                    </ol>
-                </Grid>
-                ) 
+                    </Grid>
+                </Grid>) 
                 :
                 null
             }

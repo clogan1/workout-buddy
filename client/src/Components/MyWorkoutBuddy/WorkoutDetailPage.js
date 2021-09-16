@@ -83,7 +83,7 @@ function WorkoutDetailPage({ detailWorkout, detailLogId, setShowDetail, setDetai
                     
                 </CardContent>
                 <CardActions className={classes.button}>
-                    <Button size="small" variant="contained" color="primary" onClick={handleBackClick}>Back</Button>
+                    <Button size="medium" variant="contained" color="primary" onClick={handleBackClick}>Back</Button>
                 </CardActions>
             </Card>
         </Grid>
