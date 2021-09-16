@@ -36,6 +36,11 @@ const useStyles = makeStyles({
     },
     listItem: {
         fontWeight: 'bolder'
+    },
+    signOut: {
+        fontSize: '16px',
+        marginTop: '200%',
+        paddingLeft: '70px'
     }
 })
 
@@ -82,8 +87,7 @@ function NavBar({ handleSignoutClick }) {
                 ))}
             </List>
             <br></br>
-            <Button onClick={handleSignoutClick} >Sign Out</Button>
-
+            <span  className={classes.signOut} onClick={handleSignoutClick} >sign out</span>
         </Drawer>
 
     )
