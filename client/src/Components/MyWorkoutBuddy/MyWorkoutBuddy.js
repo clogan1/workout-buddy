@@ -28,7 +28,15 @@ function MyWorkoutBuddy({ user, myLog, deleteWorkoutLogItem }) {
     const [showDetail, setShowDetail] = useState(false)
     const [detailWorkout, setDetailWorkout] = useState('')
     const [detailLogId, setDetailLogId] = useState('')
+    const [total, setTotal] = useState('')
+    const [weekly, setWeekly] = useState('')
     const {id, username, workout_logs, workouts, weekly_goal, total_workouts_completed, workouts_this_week } = user
+
+    useEffect(()=>{
+        setTotal(total_workouts_completed)
+        let thisWeek = Object.values(workouts_this_week)[0]
+        setWeekly(thisWeek )
+    }, [])
 
     function handleSeeDetails(workout_id, log_id){
         // console.log("See details clicked!")
@@ -47,14 +55,18 @@ function MyWorkoutBuddy({ user, myLog, deleteWorkoutLogItem }) {
                 <Grid xs={12} className={classes.center}>
                 <Typography variant="h4"><strong>{username}'s Workout Buddy</strong></Typography>
                 </Grid>
-                <UserStats weekly_goal={weekly_goal} total_workouts_completed={total_workouts_completed} workouts_this_week={workouts_this_week}/>
+                <UserStats weekly_goal={weekly_goal} total={total} weekly={weekly}/>
             {(!showDetail) ?
                 (
                 <UserWorkoutList 
                 myLog={myLog} 
                     workouts={workouts} 
                     handleSeeDetails={handleSeeDetails} 
-                    deleteWorkoutLogItem={deleteWorkoutLogItem}/>
+                    deleteWorkoutLogItem={deleteWorkoutLogItem}
+                    setTotal={setTotal}
+                    setWeekly={setWeekly}
+                    weekly={weekly}
+                    total={total}/>
                 )
                 :
                 ((detailWorkout !== '') ?
