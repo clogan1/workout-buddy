@@ -7,22 +7,28 @@ import WorkoutsPage from './Workouts/WorkoutsPage';
 import UpperBody from './Workouts/UpperBody';
 import LowerBody from './Workouts/LowerBody';
 import Core from './Workouts/Core';
-import Cardio from './Workouts/Cardio';
+import Cardio from './Workouts/Cardio'; 
 
 function App() {
 
  const [user, setUser] = useState()
  const [categories, setCategories] = useState([])
+ const [myLog, setLog] = useState([])
 
   useEffect(() => {
     fetch("/me")
    .then(res => {
     //  console.log(res)
      if (res.ok) {
-       res.json().then(user => setUser(user))
+       res.json().then(user => {
+         setUser(user)
+         setLog(user.workout_logs)
+        })
      }
    })
   }, [])
+
+  console.log("my log:", myLog)
 
   useEffect(() => {
     fetch('/categories')
@@ -42,9 +48,20 @@ function App() {
     })
   }
 
+  function addWorkoutLogItem(logObj){
+    setLog([...myLog, logObj ])
+  }
+  
+  function deleteWorkoutLogItem(id){
+    console.log("deleted!")
+    const updatedLog = myLog.filter(log => log.id !== id)
+    setLog(updatedLog)
+  }
+
   console.log(user)
 
   if(!user) return <Login setUser={setUser}/> 
+
 
   return (
     <div className="App">
@@ -52,22 +69,22 @@ function App() {
       {user? <button onClick={handleSignoutClick}>Sign Out</button> : null}
       <Switch>
         <Route path='/myworkoutbuddy'>
-          <MyWorkoutBuddy user={user}/>
+          <MyWorkoutBuddy user={user} myLog={myLog} deleteWorkoutLogItem={deleteWorkoutLogItem}/>
         </Route>
         <Route path='/workouts'>
           <WorkoutsPage />
         </Route>
         <Route path='/categories/1'>
-          <UpperBody categories={categories}/>
+          <UpperBody user ={user} categories={categories} addWorkoutLogItem={addWorkoutLogItem}/>
         </Route>
         <Route path='/categories/2'>
-          <LowerBody categories={categories}/>
+          <LowerBody user ={user} categories={categories} addWorkoutLogItem={addWorkoutLogItem}/>
         </Route>
         <Route path='/categories/3'>
-          <Core categories={categories}/>
+          <Core user ={user} categories={categories} addWorkoutLogItem={addWorkoutLogItem}/>
         </Route>
         <Route path='/categories/4'>
-          <Cardio categories={categories}/>
+          <Cardio user ={user} categories={categories} addWorkoutLogItem={addWorkoutLogItem}/>
         </Route>
       </Switch>
     </div>

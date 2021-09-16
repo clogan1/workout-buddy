@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 
-function UserWorkoutItem({log}) {
+function UserWorkoutItem({log, handleSeeDetails, deleteWorkoutLogItem}) {
     const [workout, setWorkout] = useState([])
+    const [completedButton, setCompletedButton] = useState(false)
     const { id, is_completed, notes, workout_id, created_at, date_completed, user_id} = log
 
     let dateAdded = Date.parse(created_at)
@@ -11,30 +12,32 @@ function UserWorkoutItem({log}) {
         fetch(`workouts/${workout_id}`)
         .then(res => res.json())
         .then(setWorkout)
+        .then(setCompletedButton(is_completed))
     }, [])
 
-    // console.log(Date.now())
+    //console.log(Date.now().getDate())
 
     function handleComplete(){
         console.log("Completed, woot!")
+        const t = new Date(Date.now()).toISOString()
         fetch(`/workout_logs/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
             },
             body: JSON.stringify(
-                { is_completed: true 
+                { is_completed: true,
+                    date_completed: t
                     //need to figure out pathing datetime in proper format
                 })
         })
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => {
+            console.log(data)
+            setCompletedButton(true)
+        })
     }
 
-    function handleSeeDetails(){
-        console.log("See details clicked!")
-        //will build out later
-    }
 
     function handleDelete(){
         console.log("Deleted, bye!")
@@ -42,6 +45,7 @@ function UserWorkoutItem({log}) {
             method: 'DELETE',
             headers: { Accept: 'application/json' }
         })
+        .then(deleteWorkoutLogItem(id))
     }
 
     return (
@@ -62,8 +66,8 @@ function UserWorkoutItem({log}) {
             null
             }
             <td>
-                {is_completed? <span>COMPLETED</span> : <button onClick={handleComplete}>Complete</button>}
-                <button onClick={handleSeeDetails}>See Details</button>
+                {completedButton? <span>COMPLETED</span> : <button onClick={handleComplete}>Complete</button>}
+                <button onClick={() => handleSeeDetails(workout.id, id)}>See Details</button>
                 <button onClick={handleDelete}>Delete</button>
             </td>
         </tr>
