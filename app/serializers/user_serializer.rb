@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :username, :password_digest, :avatar_url, :weekly_goal, :total_workouts_completed, :weekly_goal_tracker, :workouts_this_week
+  attributes :id, :username, :password_digest, :avatar_url, :weekly_goal, :total_workouts_completed, :weekly_goal_tracker, :workouts_this_week, :completed_workouts_by_week
 
   has_many :workout_logs
   has_many :workouts
@@ -14,6 +14,10 @@ class UserSerializer < ActiveModel::Serializer
 
   def workouts_this_week
     self.object.workout_logs.where(is_completed: true).group_by_week(:date_completed, last: 1).count
+  end
+
+  def completed_workouts_by_week
+    self.object.workout_logs.where(is_completed: true).group_by_week(:date_completed, last: 12).count
   end
   
 end

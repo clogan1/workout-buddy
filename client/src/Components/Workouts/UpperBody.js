@@ -11,11 +11,6 @@ const useStyles = makeStyles({
         width: '100%'
     },
     title: {
-        // display: 'flex',
-        // flexDirection: 'row',
-        // justifyContent: 'center',
-        // alignItems: 'center',
-        // backgroundColor: 'red',
         textAlign: 'center'
     },
     workoutCard: {

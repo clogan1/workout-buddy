@@ -86,12 +86,13 @@ function WorkoutCard({ workout, user, addWorkoutLogItem }){
                         <Divider className={classes.divider}/>
                         <Box display={'flex'} className={classes.box}>
                             <Box p={2} flex={'auto'}>
-                                <em>Duration: {duration} minutes</em>
-                                <br></br>
-                                <br></br>
-                                <em>Intensity: {intensity}</em>
+                                <p><strong>DURATION</strong></p>
+                                <p>{duration} minutes</p>
                             </Box>
-                            
+                            <Box p={2} flex={'auto'}>
+                                <p><strong>INTENSITY</strong></p>
+                                <p>{intensity}</p>
+                            </Box>
                         </Box>
                         <Box p={2} flex={'auto'}>
                             {toggleDetails ?
@@ -99,7 +100,7 @@ function WorkoutCard({ workout, user, addWorkoutLogItem }){
                                     <>
                                     <p><strong>EXERCISES</strong></p>
                                     {exercises.map(exercise => (
-                                    <p key={exercise.id}>{exercise.title} {exercise.recommended_reps ? ` | recommended reps: ${exercise.recommended_reps}` : null } | equipment: {exercise.equipment ? exercise.equipment : "none"}</p>
+                                    <p key={exercise.id}>{exercise.title} &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; recommended reps: {exercise.recommended_reps ? `${exercise.recommended_reps}` : `n/a`} &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp; equipment: {exercise.equipment ? exercise.equipment : "none"}</p>
                                     ))}
                                     </>
                                 )
@@ -116,7 +117,7 @@ function WorkoutCard({ workout, user, addWorkoutLogItem }){
                             <Button size="medium" variant="contained" 
                             color="primary" 
                             onClick={handleShowDetail}>
-                                See details
+                                {toggleDetails ? "hide details" : "show details"}
                             </Button>
                         </CardActions>
                     </CardContent>
