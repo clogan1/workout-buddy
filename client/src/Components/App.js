@@ -9,6 +9,7 @@ import MyWorkoutBuddy from './MyWorkoutBuddy/MyWorkoutBuddy';
 import WorkoutsPage from './Workouts/WorkoutsPage';
 import UpperBody from './Workouts/UpperBody';
 import LowerBody from './Workouts/LowerBody';
+import AddCustomWorkout from './AddCustomWorkout'
 import Core from './Workouts/Core';
 import Cardio from './Workouts/Cardio';
 import NavBar from './NavBar';
@@ -111,6 +112,9 @@ function App() {
           </Route>
           <Route path='/categories/4'>
             <Cardio user ={user} categories={categories} addWorkoutLogItem={addWorkoutLogItem}/>
+          </Route>
+          <Route path='/addworkout'>
+            <AddCustomWorkout categories={categories}/>
           </Route>
         </Switch>
       </Container>

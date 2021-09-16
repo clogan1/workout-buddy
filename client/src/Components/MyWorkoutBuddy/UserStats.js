@@ -32,7 +32,7 @@ const useStyles = makeStyles({
 function UserStats({ weekly_goal, total, weekly, completed_workouts_by_week }) {
     const classes = useStyles()
 
-    // console.log(completed_workouts_by_week)
+    console.log(completed_workouts_by_week)
 
     // let thisWeek = Object.values(workouts_this_week)[0]
 
