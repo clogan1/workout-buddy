@@ -2,15 +2,13 @@ import WorkoutCard from './WorkoutCard'
 import { makeStyles } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container'
+
 
 const useStyles = makeStyles({
-    container: {
-        // backgroundColor: '#2E2E38',
-        // height: '100vh',
-        width: '100%'
-    },
     title: {
-        textAlign: 'center'
+        textAlign: 'center',
+        padding: '10px',
     },
     workoutCard: {
         display: 'flex',
@@ -20,7 +18,13 @@ const useStyles = makeStyles({
         margin: 'auto',
         // backgroundColor: 'blue',
         width: '100%'
+    },
+    box : {
+        marginTop: '20px',
+      paddingTop: '30px',
+      height: '100vh'
     }
+
 })
 
 function LowerBody({ categories, user, addWorkoutLogItem }){
@@ -34,14 +38,18 @@ function LowerBody({ categories, user, addWorkoutLogItem }){
     return (
         <>
             {(categories.length > 0) ?
-                (<Grid container className={classes.container}>
+                (
+                <Container className={classes.box}>
+                <Grid container spacing={3} className={classes.container}>
                     <Grid item xs={12}>
-                        <Typography varient='h1' style={{fontSize: '60px'}} className={classes.title}>{lowerBodyCategory[0].name}</Typography>
+                        <Typography variant='h4' className={classes.title}><strong>{lowerBodyCategory[0].name}</strong></Typography>
                     </Grid>
                     <Grid item xs ={12} className={classes.workoutCard}>
                         {lowerBodyWorkouts}
                     </Grid>
-                </Grid>) 
+                </Grid>
+                </Container>
+                ) 
                 :
                 null
             }

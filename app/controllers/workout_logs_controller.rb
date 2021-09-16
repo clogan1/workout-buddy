@@ -1,6 +1,6 @@
 class WorkoutLogsController < ApplicationController
     def create
-        workout_log = WorkoutLog.create(workout_log_params)
+        workout_log = WorkoutLog.create!(workout_log_params)
         render json: workout_log, status: :created
     end
 
@@ -34,7 +34,7 @@ class WorkoutLogsController < ApplicationController
     end
 
     def workout_log_params
-        params.permit(:user_id, :workout_id, :is_completed, :date_completed, :notes)
+        params.permit(:user_id, :workout_id, :is_completed, :notes, :date_completed)
     end
 
 end

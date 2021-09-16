@@ -73,8 +73,8 @@ function UserWorkoutItem({log, handleSeeDetails, deleteWorkoutLogItem, setTotal,
             headers: { Accept: 'application/json' }
         })
         .then(deleteWorkoutLogItem(id))
-        setTotal((total) => total - 1)
-        setWeekly((weekly) => weekly - 1)
+        setTotal((total) => (total > 0) ? total - 1 : 0)
+        setWeekly((weekly) => (weekly > 0) ?weekly - 1 : 0)
     }
 
     return (
