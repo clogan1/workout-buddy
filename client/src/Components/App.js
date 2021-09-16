@@ -114,7 +114,7 @@ function App() {
             <Cardio user ={user} categories={categories} addWorkoutLogItem={addWorkoutLogItem}/>
           </Route>
           <Route path='/addworkout'>
-            <AddCustomWorkout categories={categories}/>
+            <AddCustomWorkout categories={categories} addWorkoutLogItem={addWorkoutLogItem} user ={user}/>
           </Route>
         </Switch>
       </Container>
