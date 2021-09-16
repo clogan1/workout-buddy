@@ -12,6 +12,7 @@ import LowerBody from './Workouts/LowerBody';
 import Core from './Workouts/Core';
 import Cardio from './Workouts/Cardio';
 import NavBar from './NavBar';
+import Container from '@material-ui/core/Container';
 
 const theme = createTheme({
   palette: {
@@ -90,9 +91,8 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-    <div className={classes.app}>
-      <NavBar />
-      {user? <Button onClick={handleSignoutClick} color="primary">Sign Out</Button> : null}
+    <Container className={classes.app}>
+      <NavBar handleSignoutClick={handleSignoutClick}/>
       <Switch>
         <Route path='/myworkoutbuddy'>
           <MyWorkoutBuddy user={user} myLog={myLog} deleteWorkoutLogItem={deleteWorkoutLogItem}/>
@@ -113,7 +113,7 @@ function App() {
           <Cardio user ={user} categories={categories} addWorkoutLogItem={addWorkoutLogItem}/>
         </Route>
       </Switch>
-    </div>
+    </Container>
     </ThemeProvider>
   );
 }

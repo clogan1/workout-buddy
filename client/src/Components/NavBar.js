@@ -10,6 +10,12 @@ import Divider from '@material-ui/core/Divider';
 import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
 import DirectionsRunIcon from '@material-ui/icons/DirectionsRun';
 import { useHistory, useLocation } from 'react-router-dom'
+import Container from '@material-ui/core/Container';
+import Button from '@material-ui/core/Button';
+import { grey } from '@material-ui/core/colors';
+
+
+
 
 
 const drawerWidth = '20%'
@@ -18,27 +24,35 @@ const useStyles = makeStyles({
         width: drawerWidth
     },
     drawerPaper: {
-        width: drawerWidth
+        width: drawerWidth,
+        backgroundColor: '#3A3838',
+        color: grey[50]
     },
     active: {
-        backgroundColor: 'gray'
+        backgroundColor: '#312E2E'
+    },
+    logo: {
+        padding: '10px',
+    },
+    listItem: {
+        fontWeight: 'bolder'
     }
 })
 
-function NavBar() {
+function NavBar({ handleSignoutClick }) {
     const classes = useStyles()
     const history = useHistory()
     const location = useLocation()
 
     const menuItems = [
         {
-            text: "My WorkoutBuddy",
-            icon: <FitnessCenterIcon />,
+            text: "My Workout Buddy",
+            icon: <FitnessCenterIcon  style={{ color: grey[50] }}/>,
             path: '/myworkoutbuddy'
         }, 
         {
             text: "Workouts",
-            icon: <DirectionsRunIcon />,
+            icon: <DirectionsRunIcon  style={{ color: grey[50] }}/>,
             path: '/workouts'
         }
         ]
@@ -50,9 +64,9 @@ function NavBar() {
             anchor="left"
             classes={{paper: classes.drawerPaper}}
         >
-            <div>
-                <Typography variant="h5">Workout Buddy</Typography>
-            </div>
+            <Container>
+                <Typography className={classes.logo} variant="h5"><strong>Workout Buddy</strong></Typography>
+            </Container>
 
             <List>
                 {menuItems.map(item => (
@@ -63,10 +77,12 @@ function NavBar() {
                         className={location.pathname == item.path ? classes.active : null}
                     > 
                         <ListItemIcon>{item.icon}</ListItemIcon>
-                        <ListItemText primary={item.text} />
+                        <ListItemText primary={item.text} className={classes.listItem}/>
                     </ListItem>
                 ))}
             </List>
+            <br></br>
+            <Button onClick={handleSignoutClick} >Sign Out</Button>
 
         </Drawer>
 
