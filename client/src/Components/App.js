@@ -28,7 +28,7 @@ const theme = createTheme({
 const useStyles = makeStyles({
   app: {
     color: 'white',
-    backgroundColor: '#282626',
+    backgroundColor: '#1E1E24',
     display: 'flex'
   }
 })
@@ -91,29 +91,29 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-    <Container className={classes.app}>
-      <NavBar handleSignoutClick={handleSignoutClick}/>
-      <Switch>
-        <Route path='/myworkoutbuddy'>
-          <MyWorkoutBuddy user={user} myLog={myLog} deleteWorkoutLogItem={deleteWorkoutLogItem}/>
-        </Route>
-        <Route path='/workouts'>
-          <WorkoutsPage />
-        </Route>
-        <Route path='/categories/1'>
-          <UpperBody user ={user} categories={categories} addWorkoutLogItem={addWorkoutLogItem}/>
-        </Route>
-        <Route path='/categories/2'>
-          <LowerBody user ={user} categories={categories} addWorkoutLogItem={addWorkoutLogItem}/>
-        </Route>
-        <Route path='/categories/3'>
-          <Core user ={user} categories={categories} addWorkoutLogItem={addWorkoutLogItem}/>
-        </Route>
-        <Route path='/categories/4'>
-          <Cardio user ={user} categories={categories} addWorkoutLogItem={addWorkoutLogItem}/>
-        </Route>
-      </Switch>
-    </Container>
+      <Container className={classes.app}>
+        <NavBar handleSignoutClick={handleSignoutClick}/>
+        <Switch>
+          <Route path='/myworkoutbuddy'>
+            <MyWorkoutBuddy user={user} myLog={myLog} deleteWorkoutLogItem={deleteWorkoutLogItem}/>
+          </Route>
+          <Route path='/workouts'>
+            <WorkoutsPage />
+          </Route>
+          <Route path='/categories/1'>
+            <UpperBody user ={user} categories={categories} addWorkoutLogItem={addWorkoutLogItem}/>
+          </Route>
+          <Route path='/categories/2'>
+            <LowerBody user ={user} categories={categories} addWorkoutLogItem={addWorkoutLogItem}/>
+          </Route>
+          <Route path='/categories/3'>
+            <Core user ={user} categories={categories} addWorkoutLogItem={addWorkoutLogItem}/>
+          </Route>
+          <Route path='/categories/4'>
+            <Cardio user ={user} categories={categories} addWorkoutLogItem={addWorkoutLogItem}/>
+          </Route>
+        </Switch>
+      </Container>
     </ThemeProvider>
   );
 }

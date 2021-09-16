@@ -25,11 +25,11 @@ const useStyles = makeStyles({
     },
     drawerPaper: {
         width: drawerWidth,
-        backgroundColor: '#3A3838',
+        backgroundColor: '#2E2E38',
         color: grey[50]
     },
     active: {
-        backgroundColor: '#312E2E'
+        backgroundColor: '#2E2E38'
     },
     logo: {
         padding: '10px',
