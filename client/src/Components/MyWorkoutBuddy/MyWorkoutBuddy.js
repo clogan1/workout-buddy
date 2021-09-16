@@ -30,7 +30,7 @@ function MyWorkoutBuddy({ user, myLog, deleteWorkoutLogItem }) {
     const [detailLogId, setDetailLogId] = useState('')
     const [total, setTotal] = useState('')
     const [weekly, setWeekly] = useState('')
-    const {id, username, workout_logs, workouts, weekly_goal, total_workouts_completed, workouts_this_week } = user
+    const {id, username, workout_logs, workouts, weekly_goal, total_workouts_completed, workouts_this_week, completed_workouts_by_week } = user
 
     useEffect(()=>{
         setTotal(total_workouts_completed)
@@ -55,7 +55,7 @@ function MyWorkoutBuddy({ user, myLog, deleteWorkoutLogItem }) {
                 <Grid xs={12} className={classes.center}>
                 <Typography variant="h4"><strong>{username}'s Workout Buddy</strong></Typography>
                 </Grid>
-                <UserStats weekly_goal={weekly_goal} total={total} weekly={weekly}/>
+                <UserStats weekly_goal={weekly_goal} total={total} weekly={weekly} completed_workouts_by_week={completed_workouts_by_week}/>
             {(!showDetail) ?
                 (
                 <UserWorkoutList 
