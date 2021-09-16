@@ -7,25 +7,26 @@ function Cardio({ categories, user, addWorkoutLogItem }){
     const [searchTerm, setSearchTerm] = useState("")
     const [workoutArr, setWorkoutArr] = useState([])
     const cardioCategory = ((categories.length > 0) ? categories.filter(category => category.name === 'Cardio') : [])
-    const cardioWorkouts = ((categories.length > 0) ? cardioCategory[0].workouts.map(workout => (
-        <WorkoutCard key={workout.id} workout={workout} user={user} addWorkoutLogItem={addWorkoutLogItem}/>
-    )) : null)
+    
 
     useEffect(() => {
         setWorkoutArr(cardioCategory[0].workouts)
-       }, [])
+       }, []) 
 
       const filteredList = workoutArr.filter(workout => {
-        if ((workout.name.toLowerCase().includes(searchTerm.toLowerCase())) || (workout.intensity.toLowerCase().includes(searchTerm.toLowerCase()))) return true
-        
-          return false
+        if ((workout.name.toLowerCase().includes(searchTerm.toLowerCase())) ) {return true}
+        else 
+          {return false}
       })
-      console.log(workoutArr) 
+      console.log(filteredList) 
 
+      const cardioWorkouts = ((categories.length > 0) ? filteredList.map(workout => (
+        <WorkoutCard key={workout.id} workout={workout} user={user} addWorkoutLogItem={addWorkoutLogItem}/>
+    )) : null)
 
     return (
         <>
-            <Search/> 
+            <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm}/> 
             {(categories.length > 0) ?
                 (<div>
                     <h1>{cardioCategory[0].name}</h1>

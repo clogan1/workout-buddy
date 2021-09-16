@@ -11,7 +11,7 @@ import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles({
     root: {
-      minWidth: 275,
+      minWidth: 700,
       borderRadius: 12,
       backgroundColor: '#2E2E38',
       color: 'white',
@@ -77,8 +77,8 @@ function WorkoutCard({ workout, user, addWorkoutLogItem }){
     console.log(exercises)
     
     return (
-        <Grid container>
-            <Grid item xs={12}>
+        // <Grid container>
+        //     <Grid item xs={12}>
                 <Card className={classes.root} variant="outlined">
                     <CardContent>
                         <Typography variant="h5" className={classes.title}><strong>{name}</strong></Typography>
@@ -122,8 +122,8 @@ function WorkoutCard({ workout, user, addWorkoutLogItem }){
                         </CardActions>
                     </CardContent>
                 </Card>
-            </Grid>
-        </Grid>
+        //     </Grid>
+        // </Grid>
     )
 }
 

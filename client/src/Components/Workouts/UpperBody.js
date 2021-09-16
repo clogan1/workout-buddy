@@ -2,16 +2,13 @@ import WorkoutCard from './WorkoutCard'
 import { makeStyles } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container'
 
 
 const useStyles = makeStyles({
-    container: {
-        // backgroundColor: '#2E2E38',
-        // height: '100vh',
-        width: '100%'
-    },
     title: {
-        textAlign: 'center'
+        textAlign: 'center',
+        padding: '10px',
     },
     workoutCard: {
         display: 'flex',
@@ -21,14 +18,23 @@ const useStyles = makeStyles({
         margin: 'auto',
         // backgroundColor: 'blue',
         width: '100%'
+    },
+    box : {
+        marginTop: '20px',
+      paddingTop: '30px',
+      height: '100vh'
     }
+
 })
 
 function UpperBody({ categories, user, addWorkoutLogItem }){
     const classes = useStyles()
     let upperBodyCategory = ((categories.length > 0) ? categories.filter(category => category.name === 'Upper Body') : [])
     console.log('CATEGORIES:', upperBodyCategory)
-    let upperBodyWorkouts = ((categories.length > 0) ? upperBodyCategory[0].workouts.map(workout => (
+    let upperBodyWorkouts = ((categories.length > 0) ? upperBodyCategory[0].workouts.sort((first, second) => {
+        if(second.name[0] > first.name[0]) return - 1
+    })
+    .map(workout => (
         <Grid item xs={12} key={workout.id}><WorkoutCard key={workout.id} workout={workout} user={user} addWorkoutLogItem={addWorkoutLogItem}/></Grid>
     )) : null)
     console.log('WORKOUTS:', upperBodyWorkouts)
@@ -37,14 +43,18 @@ function UpperBody({ categories, user, addWorkoutLogItem }){
     return (
         <>
             {(categories.length > 0) ?
-                (<Grid container className={classes.container}>
+                (
+                <Container className={classes.box}>
+                <Grid container spacing={3} className={classes.container}>
                     <Grid item xs={12}>
-                        <Typography varient='h1' style={{fontSize: '60px'}} className={classes.title}>{upperBodyCategory[0].name}</Typography>
+                        <Typography variant='h4' className={classes.title}><strong>{upperBodyCategory[0].name}</strong></Typography>
                     </Grid>
                     <Grid item xs ={12} className={classes.workoutCard}>
                         {upperBodyWorkouts}
                     </Grid>
-                </Grid>) 
+                </Grid>
+                </Container>
+                ) 
                 :
                 null
             }

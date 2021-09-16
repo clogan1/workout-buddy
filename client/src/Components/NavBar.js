@@ -15,6 +15,8 @@ import Button from '@material-ui/core/Button';
 import { grey } from '@material-ui/core/colors';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import Box from '@material-ui/core/Box';
+import BuildIcon from '@material-ui/icons/Build';
+import AssignmentIcon from '@material-ui/icons/Assignment';
 
 
 const drawerWidth = '20%'
@@ -62,9 +64,14 @@ function NavBar({ handleSignoutClick }) {
             path: '/myworkoutbuddy'
         }, 
         {
-            text: "Workouts",
+            text: "Find Workouts",
             icon: <DirectionsRunIcon style={{ color: grey[50] }}/>,
             path: '/workouts'
+        },
+        {
+            text: "Create Workouts",
+            icon: <AssignmentIcon style={{ color: grey[50] }}/>,
+            path: '/addworkout'
         }
         ]
 
