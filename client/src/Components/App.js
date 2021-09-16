@@ -79,7 +79,7 @@ function App() {
   }
   
   function deleteWorkoutLogItem(id){
-    console.log("deleted!")
+    // console.log("deleted!")
     const updatedLog = myLog.filter(log => log.id !== id)
     setLog(updatedLog)
   }

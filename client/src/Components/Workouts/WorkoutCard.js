@@ -10,7 +10,7 @@ import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles({
     root: {
-      minWidth: 700,
+      minWidth: 750,
       borderRadius: 12,
       backgroundColor: '#2E2E38',
       color: 'white',
@@ -48,7 +48,7 @@ function WorkoutCard({ workout, user, addWorkoutLogItem }){
         notes: ''
     }
 
-    console.log('workout:', workout)
+    // console.log('workout:', workout)
 
 
     function handleAddWorkout(e){
@@ -73,7 +73,7 @@ function WorkoutCard({ workout, user, addWorkoutLogItem }){
         }
     }
 
-    console.log(exercises)
+    // console.log(exercises)
     
     return (
         // <Grid container>
