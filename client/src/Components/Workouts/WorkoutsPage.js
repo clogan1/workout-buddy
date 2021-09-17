@@ -10,6 +10,7 @@ import { grey } from '@material-ui/core/colors';
 import AirlineSeatLegroomExtraIcon from '@material-ui/icons/AirlineSeatLegroomExtra';
 import DirectionsRunIcon from '@material-ui/icons/DirectionsRun';
 import Brightness5Icon from '@material-ui/icons/Brightness5';
+import Container from '@material-ui/core/Container';
 
 const useStyles = makeStyles({
    workoutTile: {
@@ -33,13 +34,13 @@ const useStyles = makeStyles({
       justifyContent: 'center',
       alignItems: 'center',
       // backgroundColor: 'grey',
-      marginTop: '20px',
+      marginTop: '8%',
       paddingTop: '30px',
-      height: '100vh'
+      // height: '100vh'
    },
    gridItem: {
       // backgroundColor: 'maroon',
-      padding: '50px'  
+       padding: '30px'
    }
 })
 
@@ -50,48 +51,46 @@ function WorkoutsPage() {
 
 
     return (
-        <Grid container spacing={3} className={classes.container}>
+       <Container>
+        <Grid container  className={classes.container}>
             <Link to='/categories/1'>
-               <Grid item xs={6} className={classes.gridItem}>
+               <Grid item xs={10} className={classes.gridItem}>
                   <Card className={classes.workoutTile}>
                         <Typography variant='h4' ><strong>Upper Body</strong></Typography>
-                        <IconButton aria-label=" Upper Body">
+                        <br></br>
                            <FitnessCenterIcon style={{fontSize: '70px', color: grey[50]}}/>
-                        </IconButton>
                   </Card>
                </Grid>
              </Link>
              <Link to='/categories/2'>
-               <Grid item xs={6} className={classes.gridItem}>
+               <Grid item xs={10} className={classes.gridItem}>
                   <Card className={classes.workoutTile}>
                         <Typography variant='h4' ><strong>Lower Body</strong></Typography>
-                        <IconButton aria-label="Lower Body">
+                        <br></br>
                            <AirlineSeatLegroomExtraIcon style={{fontSize: '70px', color: grey[50]}}/>
-                        </IconButton>
                   </Card>
                </Grid>
              </Link>
              <Link to='/categories/3'>
-               <Grid item xs={6} className={classes.gridItem}> 
+               <Grid item xs={10} className={classes.gridItem}> 
                   <Card className={classes.workoutTile}>
                         <Typography variant='h4' ><strong>Core</strong></Typography>
-                        <IconButton aria-label="Core">
+                        <br></br>
                            <Brightness5Icon style={{fontSize: '70px', color: grey[50]}}/>
-                        </IconButton>
                   </Card>
                </Grid>
              </Link>
              <Link to='/categories/4'>
-               <Grid item xs={6} className={classes.gridItem}>
+               <Grid item xs={10} className={classes.gridItem}>
                   <Card className={classes.workoutTile}>
                         <Typography variant='h4' ><strong>Cardio</strong></Typography>
-                        <IconButton aria-label="Cardio">
+                        <br></br>
                            <DirectionsRunIcon style={{fontSize: '70px', color: grey[50]}}/>
-                        </IconButton>
                   </Card>
                </Grid>
              </Link>
         </Grid>
+        </Container>
     )
 }
 

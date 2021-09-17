@@ -75,6 +75,9 @@ const useStyles = makeStyles({
           marginLeft: '80%'
 
         //   textAlign: 'right'
+      },
+      fontStyle: {
+          fontSize: '20px'
       }
 })
 
@@ -82,9 +85,9 @@ const useStyles = makeStyles({
 function UserProfile({ user, setUser }){
     // const { username, avatar_url, weekly_goal, created_at } = user
     const [ open, setOpen ] = useState(false)
-    const [ editName, setEditName ] = useState('')
-    const [ avatarUrl, setAvatarUrl ] = useState('')
-    const [ weeklyGoal, setWeeklyGoal ] = useState('')
+    const [ editName, setEditName ] = useState(user.username)
+    const [ avatarUrl, setAvatarUrl ] = useState(user.avatar_url)
+    const [ weeklyGoal, setWeeklyGoal ] = useState(user.weekly_goal)
     const [ errors, setErrors ] = useState([])
     const classes = useStyles()
 
@@ -140,15 +143,15 @@ function UserProfile({ user, setUser }){
                     />
                 </Grid>
                 <Grid item xs={12} className={classes.gridItems}>
-                    <Typography variant='h6'><strong>Member since {dateCreated}</strong></Typography>
+                    <Typography className={classes.fontStyle}>Member since <strong>{dateCreated}</strong></Typography>
                 </Grid>
                 <Grid item xs={12} className={classes.gridItems}>
-                    <Typography variant='h6'>
-                        <strong>Weekly goal: &nbsp;</strong>
+                    <Typography className={classes.fontStyle}>
+                        Weekly goal: &nbsp;
                         <span className={classes.weeklyGoal}>
                             <strong>{user.weekly_goal} </strong>
                         </span>
-                        <span>workouts per week</span>
+                        <span>{(user.weekly_goal>1) ? "workouts per week" : "workout per week"}</span>
                     </Typography>
                 </Grid>
                 <Grid item xs={12} className={classes.gridItems}>

@@ -98,7 +98,7 @@ function LoginForm({setUser, setLog}) {
             />
             <br></br>
             <br></br>
-            <Button type="submit" color="primary" variant="contained">Login</Button>
+            <Button type="submit" variant="contained" color="primary">Login</Button>
         </form>
         {(errors.length > 0) ? 
             (

@@ -34,7 +34,9 @@ const useStyles = makeStyles({
     active: {
         backgroundColor: '#2E2E38',
         fontWeight: 'bolder',
-        fontSize: '20px'
+        fontSize: '20px',
+        marginTop: '10px',
+        marginBottom: '10px'
     },
     logo: {
         padding: '10px',
@@ -44,13 +46,19 @@ const useStyles = makeStyles({
     listItem: {
         // fontWeight: 'bolder',
         fontSize: '20px',
-        "&:hover": {fontWeight: 'bold'}
+        "&:hover": {fontWeight: 'bold'},
+        marginTop: '10px',
+        marginBottom: '10px',
     },
     signOut: {
         fontSize: '16px',
         marginTop: '20px',
         // textAlign: 'center'
         paddingLeft: '60px'
+    },
+    navItem : {
+        marginTop: '10px',
+        marginBottom: '10px',
     }
 })
 
@@ -96,22 +104,17 @@ function NavBar({ handleSignoutClick }) {
 
             <List>
                 {menuItems.map(item => (
-                    <>
                     <ListItem 
                         key={item.text}
                         button
                         onClick={() => history.push(item.path)}
-                        className={location.pathname == item.path ? classes.active : null}
+                        className={location.pathname == item.path ? classes.active : classes.navItem}
                     > 
                         <ListItemIcon>{item.icon}</ListItemIcon>
                         <Typography className={location.pathname == item.path ? classes.active : classes.listItem}>
                             {item.text}
                         </Typography>
-                        {/* <ListItemText primary={item.text} className={classes.listItem}/> */}
                     </ListItem>
-                    <br></br>
-                    <br></br>
-                    </>
                 ))}
                 <ListItem
                 button>

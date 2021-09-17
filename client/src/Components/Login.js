@@ -1,4 +1,5 @@
 import LoginForm from './LoginForm';
+import { ThemeProvider, createTheme } from '@material-ui/core'
 import SignUpForm from './SignUpForm';
 import { useState } from 'react';
 import Grid from '@material-ui/core/Grid';
@@ -6,6 +7,17 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core'
 import Divider from '@material-ui/core/Divider';
 import Box from '@material-ui/core/Box';
+
+const theme = createTheme({
+    palette: {
+      primary: {
+        main: '#6F2DBD'
+      },
+      secondary: {
+        main: '#2E2E38'
+      }
+    }
+  });
 
 const useStyles = makeStyles({
     container: {
@@ -42,6 +54,10 @@ const useStyles = makeStyles({
         alignItems: 'center',
         flexDirection: 'column',
         margin: '0 auto'
+    },
+    hover :{
+      textDecoration: 'underline',
+      "&:hover": {fontWeight: 'bold'}
     }
   })
 
@@ -50,6 +66,7 @@ function Login ({ setUser, setLog }) {
 const [showLogin, setShowLogin] = useState(true)
 
     return (
+        <ThemeProvider theme={theme}>
         <Grid container className={classes.container} > 
             <Grid item  xs={4} className={classes.boxes}>
                 <Box >
@@ -65,7 +82,7 @@ const [showLogin, setShowLogin] = useState(true)
                 <LoginForm setUser={setUser} setLog={setLog}/>
                 <br></br>
                 <Typography>
-                    Not a member? <span onClick={() => setShowLogin(false)}><em>Sign up</em></span>
+                    Not a member? <span className={classes.hover} onClick={() => setShowLogin(false)}><em>Sign up</em></span>
                 </Typography>
                 </Box>
             )
@@ -75,7 +92,7 @@ const [showLogin, setShowLogin] = useState(true)
                  <SignUpForm setUser={setUser}/>
                  <br></br>
                  <Typography>
-                    Already a member? <span onClick={() => setShowLogin(true)}><em>Login</em></span>
+                    Already a member? <span className={classes.hover} onClick={() => setShowLogin(true)}><em>Login</em></span>
                 </Typography>
                  </Box>
              )
@@ -83,6 +100,7 @@ const [showLogin, setShowLogin] = useState(true)
             }
              </Grid>
         </Grid>
+        </ThemeProvider>
     )
 }
 export default Login;

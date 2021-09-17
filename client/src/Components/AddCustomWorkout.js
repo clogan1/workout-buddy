@@ -9,6 +9,8 @@ import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import { useHistory } from 'react-router-dom'
+import IconButton from '@material-ui/core/IconButton';
+import AddIcon from '@material-ui/icons/Add';
 
 const useStyles = makeStyles({
     box: {
@@ -61,6 +63,21 @@ const useStyles = makeStyles({
       },
       mainGrid: {
           justifyContent: 'center',
+      },
+      addBtn : {
+          marginLeft: '20px',
+        //   borderRadius: '50%',
+        //   height: '50px',
+        //     width: '50px',
+        //   padding: '0'
+        backgroundColor: '#bdbdbd',
+        "&:hover": {backgroundColor: '#757575'}
+
+      },
+      iconFont :{
+        // fontSize: '12px',
+        padding: '3px',
+        color: 'white'
       }
   })
 
@@ -267,11 +284,10 @@ function AddCustomWorkout({ categories, addWorkoutLogItem, user }) {
                        ))
                        } 
                     </select>
-                        <br></br>
-                        <br></br>
-                            <Button type='submit' color="primary" variant="contained">
-                            Add
-                            </Button>
+                            <IconButton type='submit' color="primary"
+                            size="small" variant="outlined" className={classes.addBtn}>
+                                <AddIcon className={classes.iconFont} />
+                            </IconButton>
                     </form>
                     <br></br>
                     <Button color="primary" variant="contained" onClick={handleFinish}>Finish + Add to My Workout Buddy</Button>
