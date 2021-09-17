@@ -17,7 +17,7 @@ const useStyles = makeStyles({
     header: {
     //   backgroundColor: 'green',
       float: 'left',
-      marginRight: '35%',
+      marginRight: '39%',
     },
     boxes: {
         marginTop:'20px',
@@ -70,7 +70,10 @@ function UserWorkoutList({ myLog, workouts, handleSeeDetails, deleteWorkoutLogIt
                 </TableRow>
             </TableHead>
             <TableBody>
-                {myLog.map(log => (
+                {myLog.sort((first, second) => {
+                    if(first.created_at > second.created_at) return -1
+                })
+                .map(log => (
                     <UserWorkoutItem key={log.id} log={log} handleSeeDetails={handleSeeDetails} deleteWorkoutLogItem={deleteWorkoutLogItem}
                     setTotal={setTotal}
                     setWeekly={setWeekly}

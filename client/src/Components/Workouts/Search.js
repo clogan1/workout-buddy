@@ -16,6 +16,9 @@ const useStyles = makeStyles({
       color: 'white',
       borderColor: '#2E2E38',
       borderRadius: 12,
+  },
+  textColor: {
+    color: 'white'
   }
 })
 
@@ -35,9 +38,9 @@ function Search({searchTerm, setSearchTerm}) {
         InputProps={{
           startAdornment: (
             <InputAdornment position="start">
-              <SearchIcon style={{fontSize: '20px', color: grey[500]}}/>
+              <SearchIcon style={{fontSize: '25px', color: grey[500]}}/>
             </InputAdornment>
-          ),
+          ), className: classes.textColor
         }}
         value={searchTerm}
         className={classes.bar}
