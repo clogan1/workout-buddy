@@ -8,7 +8,7 @@ import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button'
 import EditIcon from '@material-ui/icons/Edit';
 import SaveAltIcon from '@material-ui/icons/SaveAlt';
-import TransitEnterexitIcon from '@material-ui/icons/TransitEnterexit';
+import CloseIcon from '@material-ui/icons/Close';
 import Box from '@material-ui/core/Box';
 import IconButton from '@material-ui/core/IconButton';
 
@@ -47,14 +47,15 @@ const useStyles = makeStyles({
         left: '50%',
         transform: 'translate(-50%, -50%)',
         width: '400px',
-        height: '400px',
+        minHeight: '400px',
         backgroundColor: '#2E2E38',
         border: '10px solid #purple',
         boxShadow: '24px',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        color: 'white'
     }, 
     labels: {
         textAlign: 'left'
@@ -67,8 +68,13 @@ const useStyles = makeStyles({
         height: '30px'
       },
       exitButton: {
-          backgroundColor: 'white',
-          float: 'right'
+        //   backgroundColor: 'white',
+          float: 'right',
+          marginTop: '10px',
+          color: 'white',
+          marginLeft: '80%'
+
+        //   textAlign: 'right'
       }
 })
 
@@ -82,8 +88,10 @@ function UserProfile({ user, setUser }){
     const [ errors, setErrors ] = useState([])
     const classes = useStyles()
 
+    let options = { year: 'numeric', month: 'long' };
     let dateCreated = Date.parse(user.created_at)
-    dateCreated = new Intl.DateTimeFormat('en-US').format(dateCreated)
+    dateCreated = new Intl.DateTimeFormat('en-US', options).format(dateCreated)
+
 
     function handleEditProfile(e){
         e.preventDefault()
@@ -101,11 +109,19 @@ function UserProfile({ user, setUser }){
             if(res.ok) {
                 res.json().then(editedUser => setUser(editedUser)).then(setOpen(false))
             } else {
-                res.json().then(err => setErrors(err.errors))
+                res.json().then(err => setErrors(err.errors)).then(setOpen(true))
             }
         })
     }
     // console.log(`USER : ${user}`)
+    console.log(errors)
+
+    function handleClose(){
+        setOpen(false)
+        setEditName('')
+        setAvatarUrl('')
+        setWeeklyGoal('')
+    }
 
   
 
@@ -155,12 +171,12 @@ function UserProfile({ user, setUser }){
                     <Box className={classes.box}>
                              <IconButton
                              className={classes.exitButton}
-                             onClick={() => setOpen(false)}
+                             onClick={handleClose}
                             //  color="primary" 
                              >
-                                 <TransitEnterexitIcon />
+                                 <CloseIcon />
                             </IconButton>
-                            <form type='submit' onSubmit={handleEditProfile} autocomplete="off">
+                            <form type='submit' onSubmit={handleEditProfile} autoComplete="off">
                             <Typography className={classes.labels}>username:</Typography>
                             <input type='text' className={classes.formItems} value={editName} onChange={(e) => setEditName(e.target.value)}/>
                             <Typography className={classes.labels}>avatar url:</Typography>
@@ -187,6 +203,8 @@ function UserProfile({ user, setUser }){
                                 save
                             </Button>
                         </form>
+                        <br></br>
+                        <br></br>
                         {(errors.length > 0) ? 
                         (
                             <>

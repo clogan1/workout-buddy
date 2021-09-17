@@ -71,7 +71,7 @@ function SignUpForm({ setUser }) {
 
     return (
         <Container className={classes.formDiv}>
-            <form onSubmit={handleSignUpSubmit}  autocomplete="off">
+            <form onSubmit={handleSignUpSubmit}  autoComplete="off">
             <Typography className={classes.labels}>username:</Typography>
             <input type='text' className={classes.formItems} value={username} onChange={(e) => setUsername(e.target.value)}/>
             <Typography className={classes.labels}>password:</Typography>
