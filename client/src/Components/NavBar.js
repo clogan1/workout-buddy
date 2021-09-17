@@ -17,6 +17,8 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import Box from '@material-ui/core/Box';
 import BuildIcon from '@material-ui/icons/Build';
 import AssignmentIcon from '@material-ui/icons/Assignment';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+// import ManageAccountsIcon from '@material-ui/icons/ManageAccounts';
 
 
 const drawerWidth = '20%'
@@ -72,6 +74,11 @@ function NavBar({ handleSignoutClick }) {
             text: "Create Workouts",
             icon: <AssignmentIcon style={{ color: grey[50] }}/>,
             path: '/addworkout'
+        },
+        {
+            text: "Account",
+            icon: <AccountCircleIcon style={{ color: grey[50] }}/>,
+            path: '/profile'
         }
         ]
 

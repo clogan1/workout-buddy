@@ -13,6 +13,7 @@ import AddCustomWorkout from './AddCustomWorkout'
 import Core from './Workouts/Core';
 import Cardio from './Workouts/Cardio';
 import NavBar from './NavBar';
+import UserProfile from './MyWorkoutBuddy/UserProfile';
 import Container from '@material-ui/core/Container';
 
 const theme = createTheme({
@@ -115,6 +116,9 @@ function App() {
           </Route>
           <Route path='/addworkout'>
             <AddCustomWorkout categories={categories} addWorkoutLogItem={addWorkoutLogItem} user ={user}/>
+          </Route>
+          <Route path='/profile'>
+            <UserProfile user ={user} setUser={setUser}/>
           </Route>
         </Switch>
       </Container>

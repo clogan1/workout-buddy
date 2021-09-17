@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :username, :password_digest, :avatar_url, :weekly_goal, :total_workouts_completed, :weekly_goal_tracker, :workouts_this_week, :completed_workouts_by_week
+  attributes :id, :username, :password_digest, :avatar_url, :weekly_goal, :total_workouts_completed, :weekly_goal_tracker, :workouts_this_week, :completed_workouts_by_week, :created_at
 
   has_many :workout_logs
   has_many :workouts
