@@ -1,3 +1,11 @@
+html, body {
+  background-color: #1E1E24;
+}
+
+a:link {
+  text-decoration: none;
+}
+
 .App {
   text-align: center;
 }
@@ -11,6 +19,18 @@
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+}
+
+.WORKOUT-TILES {
+  margin: 0 auto;
+  width: 100px;
+  height: 100px;
+  color: white;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .App-header {

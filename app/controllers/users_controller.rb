@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-    before_action :authorize
+    before_action :authorize, except: :create
 
     #'/me'
     def show
@@ -13,6 +13,12 @@ class UsersController < ApplicationController
         user = User.create!(user_params)
         session[:user_id] = user.id
         render json: user, status: :created
+    end
+
+    def update
+        user = User.find_by(id: session[:user_id])
+        user.update!(user_params)
+        render json: user, status: :accepted
     end
 
     private
