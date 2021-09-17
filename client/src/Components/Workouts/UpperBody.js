@@ -23,8 +23,8 @@ const useStyles = makeStyles({
     },
     box : {
         marginTop: '20px',
-      paddingTop: '30px',
-      height: '100vh'
+        paddingTop: '30px',
+        height: '100vh'
     }
 
 })
