@@ -1,39 +1,71 @@
 import WorkoutCard from './WorkoutCard'
-import Search from './Search';
-import React, {useState, useEffect} from 'react'
+import { makeStyles } from '@material-ui/core';
+import Grid from '@material-ui/core/Grid'
+import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container'
+import React, {useState} from 'react'
+import Search from './Search'
+
+
+
+const useStyles = makeStyles({
+    title: {
+        textAlign: 'center',
+        padding: '10px',
+    },
+    workoutCard: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: 'auto',
+        // backgroundColor: 'blue',
+        width: '100%'
+    },
+    box : {
+        marginTop: '20px',
+      paddingTop: '30px',
+      height: '100vh'
+    }
+
+})
 
 function Cardio({ categories, user, addWorkoutLogItem }){
-
+    const classes = useStyles()
     const [searchTerm, setSearchTerm] = useState("")
-    const [workoutArr, setWorkoutArr] = useState([])
+
     const cardioCategory = ((categories.length > 0) ? categories.filter(category => category.name === 'Cardio') : [])
-    
-
-    useEffect(() => {
-        setWorkoutArr(cardioCategory[0].workouts)
-       }, []) 
-
-      const filteredList = workoutArr.filter(workout => {
+    const cardioWorkouts = ((categories.length > 0) ? cardioCategory[0].workouts.sort((first, second) => {
+        if(second.name[0] > first.name[0]) return - 1
+    })
+    .filter(workout => {
         if ((workout.name.toLowerCase().includes(searchTerm.toLowerCase())) ) {return true}
         else 
-          {return false}
-      })
-      console.log(filteredList) 
-
-      const cardioWorkouts = ((categories.length > 0) ? filteredList.map(workout => (
-        <WorkoutCard key={workout.id} workout={workout} user={user} addWorkoutLogItem={addWorkoutLogItem}/>
+          {return false}})
+    .map(workout => (
+        <Grid item xs={12} key={workout.id}><WorkoutCard key={workout.id} workout={workout} user={user} addWorkoutLogItem={addWorkoutLogItem}/></Grid>
     )) : null)
+
 
     return (
         <>
-            <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm}/> 
+    
             {(categories.length > 0) ?
-                (<div>
-                    <h1>{cardioCategory[0].name}</h1>
-                    <ol>
+                (
+                <Container className={classes.box}>
+                <Grid container spacing={3} className={classes.container}>
+                    <Grid item xs={12}>
+                        <Typography variant='h4' className={classes.title}><strong>{cardioCategory[0].name}</strong></Typography>
+                    </Grid>
+                    <Grid item xs={12} >
+                    <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
+                    </Grid>
+                    <Grid item xs ={12} className={classes.workoutCard}>
                         {cardioWorkouts}
-                    </ol>
-                </div>) 
+                    </Grid>
+                </Grid>
+                </Container>
+                ) 
                 :
                 null
             }
@@ -41,4 +73,4 @@ function Cardio({ categories, user, addWorkoutLogItem }){
     )
 }
 
-export default Cardio;
+export default Cardio
