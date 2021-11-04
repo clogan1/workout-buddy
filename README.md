@@ -25,7 +25,7 @@ email: J.blengino@yahoo.com
 <br />
 github: [SamJoma](https://github.com/SamJoma)
 <br />
-email: 
+email: sam.jomaiv@gmail.com
 
 
 ## Built With
